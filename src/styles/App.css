@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif
+}
+
+h1 {
+  font-size: 1.4em;
+}
+
+.header {
+  background-image: url('/src/assets/reyma.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* display: block; */
+  /* justify-content: space-between; */
+  align-items: top;
+  height: 400px;
+  /* padding: 0 100px */
+}
+
+@media screen and (min-width:100px) and (max-width:500px) {
+  h1 {
+    font-size: 1em;
+  }
+
+  .logo_img {
+    width: 40%;
+    height: 40%;
+  }
+
+  .basket_image {
+    width: 80%;
+    height: 80%;
+  }
+}
+.menu_line {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  text-align: right;
+  
+}
+
+.menu_item {
+  font-size: medium;
+  color: white;
+  margin-right: 20px;
+  
+}
+
+
+.title_wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+
+}
+
+.title {
+  display: flex;
+  color: white;
+  align-items: center;
+  /*Центрирование по вертикали */
+  /* width: 700px; */
+}
+
+
+.title_basket {
+  display: flex;
+  float: right;
+  align-items: center;
+  /*Центрирование по вертикали */
+
+}
+
+.features_wrapper {
+  display: flex;
+}
+
+.features_wrapper_ul {
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  /* Полупрозрачный фон */
+  padding: 20px 20px 20px 30px;
+  /* height: 200px; */
+}
+
+.features_ul {
+  font-size: medium;
+  margin-top: 20px;
+}
+
+.features_li {
+  margin-top: 10px;
+}
+
+.features_btn {
+  margin: 10px;
+  padding: 15px;
+  background-color: #ef6419;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  width: 140px;
+  font-size: medium;
+}
+
+.features_wrapper_btn {
+  display: block;
+}
+
+.ToggleButtonLight {
+  color: white;
+
+}
