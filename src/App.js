@@ -6,6 +6,8 @@ import Header from './components/Header';
 import Features from './components/Features';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import NewGoods from './components/NewGoods';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 
 function App() {
 
@@ -25,15 +27,17 @@ function App() {
 
 
   return (
+
     <div className="App">
-      <ThemeProvider theme={outerTheme}>
-        <Header/>
-        <NewGoods/>
-        
-
-
-        <Counter />
+      <React.StrictMode>
+      <Provider store={store}>
+        <ThemeProvider theme={outerTheme}>
+          <Header />
+          <NewGoods />
+          <Counter />
         </ThemeProvider>
+      </Provider>
+      </React.StrictMode>
     </div>
   );
 }

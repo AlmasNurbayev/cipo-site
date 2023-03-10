@@ -122,3 +122,26 @@ h1 {
   color: white;
 
 }
+
+.NewsGoods {
+  padding: 15px;
+}
+
+
+.NewsGoods_wrapper {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ProductCard_wrapper {
+  margin: 10px;
+}
+
+.ProductCard_img {
+    width: 100px;
+}
+
+.ProductCard_card {
+    font-size: small;
+}
