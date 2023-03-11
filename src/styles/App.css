@@ -6,11 +6,11 @@
 }
 
 h1 {
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 .header {
-  background-image: url('/src/assets/reyma.jpg');
+  background-image: url('/src/assets/OBUV-83.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -46,12 +46,12 @@ h1 {
   position: absolute;
   right: 0;
   text-align: right;
-  
+  padding-top: 20px;
 }
 
 .menu_item {
   font-size: medium;
-  color: white;
+  color: black;
   margin-right: 20px;
   
 }
@@ -65,7 +65,7 @@ h1 {
 
 .title {
   display: flex;
-  color: white;
+  color: #ef6419;
   align-items: center;
   /*Центрирование по вертикали */
   /* width: 700px; */
@@ -95,7 +95,7 @@ h1 {
 }
 
 .features_ul {
-  font-size: medium;
+  font-size: smaller;
   margin-top: 20px;
 }
 

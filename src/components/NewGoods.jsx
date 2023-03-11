@@ -4,7 +4,7 @@ import ProductCard from './ProductCard';
 
 export default function NewGoods() {
 
-  const { data, isLoading, error } = useProductsNewsQuery(20);
+  const { data, isLoading, error } = useProductsNewsQuery(15);
   
   console.log(data);
   console.log(isLoading);
@@ -19,7 +19,7 @@ export default function NewGoods() {
       : 
       //  <span>готово</span>
         data.map((product) => 
-                <ProductCard product={product}/>
+                <ProductCard product={product} id={'data' + product.product_id}/>
          )        
       }
       </div>
