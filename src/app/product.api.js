@@ -12,4 +12,40 @@ export const productApi = createApi({
     })
 })
 
+export const newsApi = createApi({
+    reducerPath: 'News',
+    baseQuery: fetchBaseQuery({baseUrl: backend_url}),
+    endpoints: (builder) => ({
+        News: builder.query({query: (count) => `api/news?news=${count}`})
+    })
+})
+
+export const storesApi = createApi({
+    reducerPath: 'Stores',
+    baseQuery: fetchBaseQuery({baseUrl: backend_url}),
+    endpoints: (builder) => ({
+        Stores: builder.query({query: (count) => `api/stores`})
+    })
+})
+
+export const filtersApi = createApi({
+    reducerPath: 'Filters',
+    baseQuery: fetchBaseQuery({baseUrl: backend_url}),
+    endpoints: (builder) => ({
+        Filters: builder.query({query: () => `api/productsFilter`})
+    })
+})
+
+export const productsApi = createApi({
+    reducerPath: 'products',
+    baseQuery: fetchBaseQuery({baseUrl: backend_url}),
+    endpoints: (builder) => ({
+        products: builder.query({query: (size) => `api/products?size=${size}`})
+    })
+})
+
 export const {useProductsNewsQuery} = productApi;
+export const {useNewsQuery} = newsApi;
+export const {useStoresQuery} = storesApi;
+export const {useFiltersQuery} = filtersApi;
+export const {useProductsQuery} = productsApi;

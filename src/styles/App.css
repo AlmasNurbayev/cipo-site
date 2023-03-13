@@ -9,16 +9,20 @@ h1 {
   font-size: 1.2em;
 }
 
-.header {
+.main_wrapper {
   background-image: url('/src/assets/OBUV-83.jpg');
-  background-position: center center;
+  background-position: top top;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
+}
+
+.header {
 
   /* display: block; */
   /* justify-content: space-between; */
   align-items: top;
-  height: 400px;
+  height: 250px;
+  
   /* padding: 0 100px */
 }
 
@@ -82,6 +86,7 @@ h1 {
 
 .features_wrapper {
   display: flex;
+  justify-content: center;
 }
 
 .features_wrapper_ul {
@@ -92,6 +97,7 @@ h1 {
   /* Полупрозрачный фон */
   padding: 20px 20px 20px 30px;
   /* height: 200px; */
+  width: 80%;
 }
 
 .features_ul {
@@ -100,7 +106,7 @@ h1 {
 }
 
 .features_li {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .features_btn {
@@ -123,7 +129,7 @@ h1 {
 
 }
 
-.NewsGoods {
+.Block_wrapper {
   padding: 15px;
 }
 
@@ -144,4 +150,35 @@ h1 {
 
 .ProductCard_card {
     font-size: small;
+}
+
+.News_wrapper {
+  padding: 10px;
+  display: flex;  
+  flex-wrap: wrap; 
+}
+
+.Stores_wrapper {
+  padding: 10px;
+  display: flex;  
+  flex-wrap: wrap; 
+}
+
+.par {
+  padding: 10px;
+  background-color: #ef6419;
+  color: white;
+  font-size: medium;
+  border-radius: 5px;
+}
+
+.social_wrapper {
+  padding: 10px;
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+}
+
+.social_icons {
+  padding-right: 50px;
 }

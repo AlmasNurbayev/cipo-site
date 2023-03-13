@@ -14,7 +14,7 @@ export default function ProductModal({show, setShow, product}) {
 
     //const [show, setShow] = useState(show1);
 
-    console.log('show in modal ' + show);
+    console.log('show in modal ' + show);   
 
   return (
     <div>

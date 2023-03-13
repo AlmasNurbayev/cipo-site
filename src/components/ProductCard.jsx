@@ -22,16 +22,16 @@ export default function ProductCard({ product }) {
     const handleShow = () => {
         setModalID(product.product_id);
         setShow(true)};
-        console.log(show, modalID);
+        //console.log(show, modalID);
     function go(id) {
 
-        console.log(id);
+        //console.log(id);
     }
 
     return (
         <div className='ProductCard_wrapper' id={'ProductCard_wrapper_' + product.product_id}>
 
-            {show ? <ProductModal show={show} product={product} OnHide={handleClose} setShow={setShow}></ProductModal> : ''}
+            {show ? <ProductModal show={show} product={product} OnHide={handleClose} setShow={setShow} id={'modal'+product.product_id}></ProductModal> : ''}
             
 
             <Card style={{ width: '150px' }} id={'card_' + product.product_id} >
@@ -46,7 +46,7 @@ export default function ProductCard({ product }) {
                     <ListGroup.Item style={{ padding: '5px' }}>
                         <ToggleButtonGroup type="radio" name="options" defaultValue={1} size='sm' id={'ButtonGroup' + product.product_id}>
                             {product.qnt_price.map((e, index) =>
-                                <ToggleButton id={product.product_id + 'button' + index} type='checkbox' variant='light' style={{ padding: '5px' }} value={e.size} size='sm'>{e.size}</ToggleButton>
+                                <ToggleButton id={product.product_id + 'button_size_' + index} type='checkbox' variant='light' style={{ padding: '5px' }} value={e.size} size='sm'>{e.size}</ToggleButton>
                             )}
                         </ToggleButtonGroup>
                     </ListGroup.Item>
