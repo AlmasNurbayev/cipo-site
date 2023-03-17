@@ -34,7 +34,7 @@ export default function ProductCard({ product }) {
             {show ? <ProductModal show={show} product={product} OnHide={handleClose} setShow={setShow} id={'modal'+product.product_id}></ProductModal> : ''}
             
 
-            <Card style={{ width: '150px' }} id={'card_' + product.product_id} >
+            <Card style={{ width: '150px' }} key={'card_' + product.product_id} >
                 <Card.Img variant="top" src={backend_url + '/' + product.image_active_path} />
                 <Card.Body style={{ height: '120px', padding: '5px' }}>
                     <Card.Title>{product.vid_modeli_name}</Card.Title>
@@ -44,9 +44,9 @@ export default function ProductCard({ product }) {
                 </Card.Body>
                 <ListGroup className="list-group-flush" >
                     <ListGroup.Item style={{ padding: '5px' }}>
-                        <ToggleButtonGroup type="radio" name="options" defaultValue={1} size='sm' id={'ButtonGroup' + product.product_id}>
+                        <ToggleButtonGroup type="radio" name="options" defaultValue={1} size='sm' key={'ButtonGroup' + product.product_id}>
                             {product.qnt_price.map((e, index) =>
-                                <ToggleButton id={product.product_id + 'button_size_' + index} type='checkbox' variant='light' style={{ padding: '5px' }} value={e.size} size='sm'>{e.size}</ToggleButton>
+                                <ToggleButton key={product.product_id + 'button_size_' + index} type='checkbox' variant='light' style={{ padding: '5px' }} value={e.size} size='sm'>{e.size}</ToggleButton>
                             )}
                         </ToggleButtonGroup>
                     </ListGroup.Item>

@@ -28,7 +28,7 @@ export default function News() {
                 <CardGroup>
                      <Row xs={1} md={2} className="g-4">
                     {data.map((element, index) =>
-                        <Card id = {'NewsCard' + index} border="light" style={{ width: '18rem' }}>
+                        <Card key = {'NewsCard' + index} border="light" style={{ width: '18rem' }}>
                             <Card.Img variant="top" src={backend_url + '/' +element.image_path} width='150px' />
                             <Card.Body>
                                 <Card.Title>{element.title}</Card.Title>

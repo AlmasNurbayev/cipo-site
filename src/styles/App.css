@@ -182,3 +182,30 @@ h1 {
 .social_icons {
   padding-right: 50px;
 }
+
+.goods_wrapper {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sort_wrapper {
+  /* width: 450px; */
+  display: flex;  
+}
+
+.search_input {
+  width: 150px;
+}
+
+.inner_btn {
+  position: relative;
+  width: 50px;
+  border: none;
+  background-color: #ef6419;
+  color: white;
+  line-height: 1px;
+  /* left: calc(200px); */
+  z-index: 99999;
+}
+

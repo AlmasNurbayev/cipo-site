@@ -22,7 +22,7 @@ export default function NewGoods() {
       : 
       //  <span>готово</span>
         data.map((product) => 
-                <ProductCard product={product} id={'data' + product.product_id}/>
+                <ProductCard product={product} key={'newGoods' + product.product_id + '/' + product.sum}/>
          )        
       }
       </div>

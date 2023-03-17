@@ -25,7 +25,7 @@ export default function ProductModal({show, setShow, product}) {
                 <Modal.Body style={{lineHeight: 0.8}}>
                 <Carousel>
                 {product.image_registry.map((e, index) =>
-                                <Carousel.Item id={'carousel' + index + product.product_id}>
+                                <Carousel.Item key={'carousel' + index + product.product_id}>
                                             <img
                                 className="d-block w-100"
                                 src={backend_url + '/' + e.full_name}
@@ -48,7 +48,7 @@ export default function ProductModal({show, setShow, product}) {
                     {product.material_inside ? <p>Материал низа: {product.material_inside}</p>: ''}Доступные размеры:
                         <ToggleButtonGroup type="radio" name="options" defaultValue={1} size='lg' id={'ButtonGroup' + product.product_id}>
                             {product.qnt_price.map((e, index) =>
-                                <ToggleButton id={product.product_id + index} type='checkbox' variant='light' style={{ padding: '5px' }} value={e.size} size='sm'>{e.size}</ToggleButton>
+                                <ToggleButton key={'szbtn' + product.product_id + index} type='checkbox' variant='light' style={{ padding: '5px' }} value={e.size} size='sm'>{e.size}</ToggleButton>
                             )}
                         </ToggleButtonGroup>
 
