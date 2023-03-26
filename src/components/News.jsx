@@ -1,3 +1,5 @@
+'useStrict';
+
 import React from 'react'
 import { useNewsQuery } from '../app/product.api.js'
 import { backend_url } from '../app/product.api.js';

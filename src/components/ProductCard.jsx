@@ -1,3 +1,5 @@
+'useStrict';
+
 import React from 'react';
 import { useState } from 'react';
 
@@ -16,11 +18,11 @@ import Button from 'react-bootstrap/Button';
 export default function ProductCard({ product }) {
     //const [checked, setChecked] = useState(false);
     const [show, setShow] = useState(false);
-    const [modalID, setModalID] = useState(0);
+    //const [modalID, setModalID] = useState(0);
 
     const handleClose = () => setShow(false);
     const handleShow = () => {
-        setModalID(product.product_id);
+        //setModalID(product.product_id);
         setShow(true)};
         //console.log(show, modalID);
     function go(id) {

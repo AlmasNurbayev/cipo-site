@@ -1,4 +1,4 @@
-
+'useStrict';
 
 export const sortArray = [
 {id:'sum-desc', name: 'Цена - сначала дороже'},

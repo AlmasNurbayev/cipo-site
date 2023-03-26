@@ -1,14 +1,16 @@
+'useStrict';
+
 import React from 'react'
 import { useState } from 'react';
 
+
 import { backend_url } from '../app/product.api';
 
-
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import Carousel from 'react-bootstrap/Carousel';
+// import Row from 'react-bootstrap/Row';
 
 export default function ProductModal({show, setShow, product}) {
 

@@ -1,3 +1,5 @@
+'useStrict';
+
 import React, { useCallback, useRef, useState } from 'react'
 import debounce from 'lodash.debounce';
 
@@ -34,17 +36,39 @@ export default function Goods({ data }) {
     let [size, setSize] = useState(size_0);
     let [sort, setSort] = useState();
     let [search, setSearch] = useState();
+    let [minPrice, setMinPrice] = useState(1);
+    let [maxPrice, setMaxPrice] = useState(100000);
     const inputRef = useRef();
+    const priceMinRef = useRef();
+    const priceMaxRef = useRef();
 
     //console.log(data);
     async function update(e) {
 
     }
 
+    function updateMinPrice(e) {
+        let newMin = Number(e.target.value)
+        if (newMin > maxPrice) {
+            newMin = maxPrice;
+            priceMinRef.current.value = newMin;
+        }
+        setMinPrice(newMin);
+    }
+
+    function updateMaxPrice(e) {
+        let newMax = Number(e.target.value)
+        if (newMax < minPrice) {
+            newMax = minPrice;
+            priceMaxRef.current.value = newMax;
+        }
+        setMaxPrice(newMax);
+    }
+
     const searchDebounce = useCallback(
-        debounce((text)=> {
+        debounce((text) => {
             setSearch(text);
-            console.log(text);    
+            console.log(text);
         }, 1000), []
     )
 
@@ -87,52 +111,28 @@ export default function Goods({ data }) {
 
 
     return (
-        <div>
-            <div className='filters_wrapper'>
-                <div className='vertical_wrapper'>
-                    <div className='sort_wrapper'>
-                        <Form.Control
-                            type="text"
-                            ref={inputRef}
-                            id="inputSearch"
-                            className='search_input'
-                            placeholder="поиск по названию..."
-                            aria-describedby="поиск по названию..."
-                            onChange={(event) => searching(event)}
-                        />
-                          <Button className="inner_btn" onClick={clearSearch}>X</Button>Сортировать по...
-                        <Form.Select aria-label="Default select example" size='sm'  variant="outline-danger" onChange={(event) => sorting(event)}>
-                            <option>Сортировка</option>
-                            {sortArray.map((e, index) => 
-                                <option key={e.name} value={e.id}>{e.name}</option>
-                            )}
-                        </Form.Select>
+        <div className='ver1'>
+            <div className='hor1'>
+                <div className='sort_wrapper'>
+                    <Form.Control
+                        type="text"
+                        ref={inputRef}
+                        id="inputSearch"
+                        bsPrefix='search_input'
+                        placeholder="поиск по названию..."
+                        aria-describedby="поиск по названию..."
+                        onChange={(event) => searching(event)}
+                    />
+                    <Button bsPrefix="search_clear" onClick={clearSearch}>X</Button>
+                    <div className="sort_div">
+                    <Form.Select bsPrefix="inputSort" aria-label="Default select example" size='sm' variant="outline-danger" onChange={(event) => sorting(event)}>
+                        <option>Сортировка</option>
+                        {sortArray.map((e, index) =>
+                            <option key={e.name} value={e.id}>{e.name}</option>
+                        )}
+                    </Form.Select>
                     </div>
-                    <div className='group_wrapper'>
-                        Сезоны:
-                        <ToggleButtonGroup type="checkbox" defaultValue={'Все'} className="mb-2" >
-
-                            {product_group.map((e, index) =>
-                                <ToggleButton id={e.name_1c} key={"tb_group_" + index} value={e.id} variant="outline-danger" onChange={(event) => updateFilter(event, product_group, setProductGroup)}>
-                                    {e.name_1c}
-                                </ToggleButton>
-                            )
-                            }
-
-                        </ToggleButtonGroup>
-                    </div>
-                    <div className='vid_wrapper'>
-                        Модели:
-                        <ToggleButtonGroup type="checkbox" defaultValue={'Все'} className="mb-2">
-                            {vid_modeli.map((e, index) =>
-                                <ToggleButton id={e.name_1c} key={"tb_vid_" + index} value={e.id} variant="outline-danger" onChange={(event) => updateFilter(event, vid_modeli, setVidModeli)}>
-                                    {e.name_1c}
-                                </ToggleButton>
-                            )}
-                        </ToggleButtonGroup>
-                    </div>
-                    <Button onClick={update}>Сбросить фильтры (нужно доделать)</Button>
-                </div>
+                </div>  
                 <div className='size_wrapper'>
                     Размеры:
                     <ToggleButtonGroup type="checkbox" defaultValue={'Все'} className="mb-2">
@@ -142,9 +142,52 @@ export default function Goods({ data }) {
                             </ToggleButton>
                         )}
                     </ToggleButtonGroup>
+
                 </div>
+
+                
             </div>
-            <GoodsList product_group={product_group} vid_modeli={vid_modeli} size={size} take={10} sort={sort} search={search}/>
+            <div className='vertical_wrapper'>
+                    <div className='group_wrapper'>
+                        <p>Сезоны:  </p>
+                        <ToggleButtonGroup vertical type="checkbox" defaultValue={'Все'} className="mb-2" >
+
+                            {product_group.map((e, index) =>
+                                <ToggleButton id={e.name_1c}  key={"tb_group_" + index} value={e.id} variant="outline-danger" onChange={(event) => updateFilter(event, product_group, setProductGroup)}>
+                                    {e.name_1c}
+                                </ToggleButton>
+                            )
+                            }
+
+                        </ToggleButtonGroup>
+                    
+                    <div className='vid_wrapper'>
+                        <p>Модели:</p>
+                        <ToggleButtonGroup vertical type="checkbox" defaultValue={'Все'} className="mb-2">
+                            {vid_modeli.map((e, index) =>
+                                <ToggleButton id={e.name_1c} key={"tb_vid_" + index} value={e.id} variant="outline-danger" onChange={(event) => updateFilter(event, vid_modeli, setVidModeli)}>
+                                    {e.name_1c}
+                                </ToggleButton>
+                            )}
+                        </ToggleButtonGroup>
+                    </div>
+                    <div className='price_wrapper'>
+                        Цена:
+                        <div className='range'>от:
+                            <Form.Range variant="outline-danger" min="1" max="100000" value={minPrice} onChange={(e) => updateMinPrice(e)}
+                                ref={priceMinRef}
+                            />{minPrice.toLocaleString('ru-RU')}</div>
+                        <div className='range'>до:
+                            <Form.Range min="1" max="100000" value={maxPrice} onChange={(e) => updateMaxPrice(e)}
+                                ref={priceMaxRef}
+                            />{maxPrice.toLocaleString('ru-RU')}</div>
+                                <Button onClick={update}>Сбросить фильтры (нужно доделать)</Button>
+                    </div>
+                    </div>
+                    <GoodsList className='goodsList' product_group={product_group} vid_modeli={vid_modeli} size={size} take={20} sort={sort} search={search} minPrice={minPrice} maxPrice={maxPrice} />                    
+                
+                </div>
+            
 
         </div>
     )

@@ -27,13 +27,13 @@ h1 {
 }
 
 @media screen and (min-width:100px) and (max-width:500px) {
-  h1 {
-    font-size: 1em;
+  h3 {
+    font-size: 8rem;
   }
 
   .logo_img {
-    width: 40%;
-    height: 40%;
+    width: 80%;
+    height: 80%;
   }
 
   .basket_image {
@@ -41,22 +41,25 @@ h1 {
     height: 80%;
   }
 }
+
+
 .menu_line {
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  align-items: right;
+  /* text-align: right; */
 }
 
 .menu {
-  position: absolute;
-  right: 0;
+  /* //position: absolute; */
   text-align: right;
-  padding-top: 20px;
+  /* margin-top: 20px; */
+  /* margin-bottom: 20px; */
 }
 
 .menu_item {
   font-size: medium;
   color: black;
-  margin-right: 20px;
+  margin-right: 10px;
   
 }
 
@@ -97,7 +100,7 @@ h1 {
   /* Полупрозрачный фон */
   padding: 20px 20px 20px 30px;
   /* height: 200px; */
-  width: 80%;
+  width: 70%;
 }
 
 .features_ul {
@@ -109,15 +112,25 @@ h1 {
   margin-top: 5px;
 }
 
-.features_btn {
-  margin: 10px;
-  padding: 15px;
-  background-color: #ef6419;
+.features_btn1 {
+  /* background-color: rgb(239, 100, 25); */
+  background: rgba(239, 100, 25, 0.7);
   color: white;
-  border-radius: 10px;
   border: none;
-  width: 140px;
   font-size: medium;
+  cursor: pointer;
+  width: 160px;
+  height: 100px;
+}
+
+.features_btn2 {
+  background: rgba(18, 197, 30, 0.7);
+  color: white;
+  border: none;
+  font-size: medium;
+  cursor: pointer;
+  width: 160px;
+  height: 100px;
 }
 
 .features_wrapper_btn {
@@ -131,6 +144,7 @@ h1 {
 
 .Block_wrapper {
   padding: 15px;
+  display: block;
 }
 
 
@@ -189,13 +203,68 @@ h1 {
   flex-wrap: wrap;
 }
 
+.hor1 {
+display: block;  
+}
+
+.ver1 {
+  display: block;  
+  }
+
+  .goodList {
+    display: flex;  
+  }
+
+
+
+.vertical_wrapper {
+  display: flex;
+  
+}
+
+.group_wrapper {
+  width: 200px;
+  display: block;
+}
+
 .sort_wrapper {
   /* width: 450px; */
   display: flex;  
+  margin-bottom: 10px;
 }
 
+.size_wrapper {
+  display: inline
+}
+
+
 .search_input {
-  width: 150px;
+  width: 200px;
+  background: transparent;
+  border:1px solid #ef6419;
+  
+}
+
+.search_clear {
+  position: relative;
+  background: transparent;
+  border:1px solid #ef6419;
+  width: 40px;
+}
+
+.sort_div {
+  display: flex;
+  
+  position: absolute;
+  right: 10px
+
+}
+
+.inputSort {
+  width: 200px;
+  background: transparent;
+  border:1px solid #ef6419;
+
 }
 
 .inner_btn {
@@ -209,3 +278,38 @@ h1 {
   z-index: 99999;
 }
 
+.range {
+  width: 150px;
+}
+
+.pages_wrapper {
+  display:flex ;
+}
+
+.page-item .page-link {
+  background: #ef6419;
+  color: white;
+  
+}
+
+.page-link .active {
+  --bs-pagination-color: rgba(18, 197, 30, 0.7);
+  background-color: rgba(18, 197, 30, 0.7);
+  color: rgba(18, 197, 30, 0.7)
+}
+
+.page {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 100px;
+  border: #ef6419;
+  border-style: solid;
+}
+
+.active_page {
+  font-weight: bold ;
+}
+
+.input_wrapper {
+  display: flex;
+}

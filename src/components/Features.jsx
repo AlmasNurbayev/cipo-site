@@ -1,16 +1,40 @@
-import React from 'react';
-import Accordion from 'react-bootstrap/Accordion';
-import { goto } from '../routes/router';
+'useStrict';
 
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import Accordion from 'react-bootstrap/Accordion';
+import { useState } from 'react';
+import SubscribeModal from './SubscribeModal';
 
 export default function Features() {
 
+    const [showSubscribe, setShowSubscribe] = useState(false);
+    const location = useLocation();
+    const history = useNavigate();
 
+    async function goto(e, id, path) {
+        console.log(location.pathname);
+        let hero = document.getElementById(id);
+        e.preventDefault();  // Stop Page Reloading
+        if (location.pathname === '/') {
+            hero && hero.scrollIntoView();
+        } else {
+            history(path);
+        }
+
+    }
+
+
+
+    //console.log(showSubscribe);
+ 
     return (
         <div className='features_wrapper'>
+            {showSubscribe ? <SubscribeModal show={showSubscribe} setShowSubscribe={setShowSubscribe}></SubscribeModal> : ''}
             <div className='features_wrapper_ul'>
 
-                <Accordion defaultActiveKey="1">
+                <Accordion flush={false} defaultActiveKey="1">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Почему стоит покупать у нас</Accordion.Header>
                         <Accordion.Body>
@@ -26,12 +50,21 @@ export default function Features() {
 
 
             </div>
-            <div className='features_wrapper_btn'>
+            <div>
                 {/* <Link to="/Contacts"> */}
-                    <button className='features_btn' onClick={e => goto(e, 'stores_anchor')}>Где купить</button>
+                <button className='features_btn1' onClick={e => goto(e,'stores_anchor', '/contacts')}>Где купить</button>
+                    
                 {/* </Link> */}
                 {/* <button className='features_btn'>Заказать онлайн</button> */}
             </div>
+            <div>
+                {/* <Link to="/Contacts"> */}
+                <button  className='features_btn2' onClick={() => setShowSubscribe(true)}>Подписаться...</button>
+                
+                {/* </Link> */}
+                {/* <button className='features_btn'>Заказать онлайн</button> */}
+            </div>
+
         </div>
     )
 }

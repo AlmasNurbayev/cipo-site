@@ -1,5 +1,7 @@
+'useStrict';
+
 import React from 'react';
-import { Spinner } from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner';
 
 import Header from '../components/Header';
 import Goods from '../components/Goods';
@@ -25,7 +27,7 @@ export default function GoodsPage() {
                 </Spinner>
                 : 
                 <div>
-                <h1>Будущие товары...</h1>
+                <h1>Каталог</h1>
                 <Goods data={data}/>
                 </div>
             }        

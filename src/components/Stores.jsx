@@ -1,3 +1,5 @@
+'useStrict';
+
 import React from 'react'
 import { useNewsQuery } from '../app/product.api.js'
 import { useStoresQuery } from '../app/product.api.js';
@@ -35,7 +37,7 @@ export default function Stores() {
                                     <Card key={'StoresCard' + index} border="light" style={{ width: '18rem' }}>
                                         <Card.Img variant="top" src={backend_url + '/' + element.image_path} width='150px' />
                                         <Card.Body>
-                                            <Card.Title>{element.name_1c}</Card.Title>
+                                            {/* <Card.Title>{element.name_1c}</Card.Title> */}
                                             <Card.Text></Card.Text>
                                                 <ListGroup className="list-group-flush">
                                                     <ListGroup.Item>{element.city + '. ' + element.address}</ListGroup.Item>

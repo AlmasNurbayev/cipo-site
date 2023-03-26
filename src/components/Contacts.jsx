@@ -1,3 +1,5 @@
+'useStrict';
+
 import React from 'react'
 
 export default function Contacts() {
