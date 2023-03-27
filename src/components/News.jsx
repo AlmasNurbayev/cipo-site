@@ -13,7 +13,7 @@ import Row from 'react-bootstrap/Row';
 
 export default function News() {
 
-    const { data, isLoading, error } = useNewsQuery(3);
+    const { data, isLoading, error } = useNewsQuery(4);
 
 
 

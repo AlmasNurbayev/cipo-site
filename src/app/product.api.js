@@ -3,7 +3,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 //export const backend_url = 'http://localhost:3001';
-export const backend_url = 'http://45.146.167.130:3001';
+export const backend_url = 'https://45.146.167.130';
 
 export const productApi = createApi({
     reducerPath: 'productsNews',

@@ -16,7 +16,7 @@ export const publicRoutes = createBrowserRouter([
     //{path: '/logout', element: <Logout/>, exact:true},
     {path: '/stores', element: <ContactsPage/>},
     {path: '/contacts', element: <ContactsPage/>},
-    {path: '/goods', element: <GoodsPage/>, exact:true},
+    {path: '/goods', element: <GoodsPage/>},
     {path: '/', element: <Main title='Главная'/>, exact:true},
     {path: '*', element: <ErrorPage/>, exact:true},
 ])
