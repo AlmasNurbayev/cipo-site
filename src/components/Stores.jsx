@@ -17,6 +17,22 @@ export default function Stores() {
 
     const { data, isLoading, error } = useStoresQuery();
 
+    function working(data) {
+
+        function data_day(num) {
+            return data[num].split('-')[0] + ':00-' + data[num].split('-')[1] + ':00'
+        }
+        let text = '';
+        text += `Понедельник: ` + data_day('d01') + '\n';
+        text += `Вторник: ` + data_day('d02')  + '\n' ;
+        text += `Среда: ` + data_day('d03')  + '\n' ;
+        text += `Четверг: ` + data_day('d04')  + '\n' ;
+        text += `Пятница: ` + data_day('d05')  + '\n' ;
+        text += `Суббота: ` + data_day('d06')  + '\n' ;
+        text += `Воскресенье: ` + data_day('d07')  + '\n' ;
+
+        return text;
+    }
 
 
     return (
@@ -42,6 +58,10 @@ export default function Stores() {
                                                 <ListGroup className="list-group-flush">
                                                     <ListGroup.Item>{element.city + '. ' + element.address}</ListGroup.Item>
                                                     <ListGroup.Item>{element.phone}</ListGroup.Item>
+                                                    <ListGroup.Item>
+                                                        <p>Время работы:</p>
+                                                        {working(element.working_hours)}
+                                                    </ListGroup.Item>
                                                     <ListGroup.Item><Card.Link href={element.link_2gis}>открыть в 2GIS</Card.Link></ListGroup.Item>
                                                 </ListGroup>
                                             
