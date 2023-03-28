@@ -184,7 +184,7 @@ export default function Goods({ data }) {
                                 <Button onClick={update}>Сбросить фильтры (нужно доделать)</Button>
                     </div>
                     </div>
-                    <GoodsList className='goodsList' product_group={product_group} vid_modeli={vid_modeli} size={size} take={20} sort={sort} search={search} minPrice={minPrice} maxPrice={maxPrice} />                    
+                    <GoodsList className='goodsList' product_group={product_group} vid_modeli={vid_modeli} size={size} take={20} sort={sort} search={search} minPrice={minPrice} maxPrice={maxPrice} initPage={1}/>                    
                 
                 </div>
             

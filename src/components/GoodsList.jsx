@@ -9,7 +9,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { useState } from 'react';
 import React from 'react'
 
-export default function GoodsList({ take, size, vid_modeli, product_group, minPrice, maxPrice, sort, search }) {
+export default function GoodsList({ take, size, vid_modeli, product_group, minPrice, maxPrice, sort, search, initPage }) {
 
   product_group = transArray(product_group);
   vid_modeli = transArray(vid_modeli);
@@ -20,10 +20,18 @@ export default function GoodsList({ take, size, vid_modeli, product_group, minPr
   const [countPages, setCountPages] = useState(1);
   const { data, isLoading, error, isFetching } = useProductsQuery({ skip: skip, take: take, product_group: product_group, vid_modeli: vid_modeli, size: size, sort: sort, search_name: search, minPrice: minPrice, maxPrice: maxPrice });
 
+
+  function notFound(newPage) {
+    setCurrentPage(newPage);
+    return (<h2>Ничего не нашлось</h2>)
+  }
+
   function changePage(i) {
     setCurrentPage(i);
-
     setSkip(take * (i - 1));
+    if (data.data.length === 0) {
+      setSkip(0);  
+    }     
     console.log(skip);
     //isLoading={isFetching};
   }
@@ -47,10 +55,13 @@ export default function GoodsList({ take, size, vid_modeli, product_group, minPr
   let pages_obj = [];
 
   if (!isLoading) {
-
+    if (skip !== 0 && data.data.length === 0) {
+      setSkip(0);
+      setCurrentPage(1);
+    }
     // массив страниц
     //pages_obj.push(<Pagination onClick={setCurrentPage(currentPage-1)} key={'page<'} page={currentPage-1} active={true}></Pagination>)
-    for (let i = 1; i <= Math.trunc(data.full_count / take) + 1; i++) {
+    for (let i = 1; i <= Math.ceil(data.full_count / take); i++) {
       pages_arr.push(i);
 
       if (i === currentPage) {
@@ -58,6 +69,9 @@ export default function GoodsList({ take, size, vid_modeli, product_group, minPr
       } else {
         pages_obj.push(<Pagination.Item onClick={() => changePage(i)} key={'page' + i} active={false}>{i}</Pagination.Item>)
       }
+    }
+    if (data.data.length === 0) {
+      console.log('data 0');  
     }
     console.log('currentPage', currentPage);
     //console.log('pages ', pages_arr, 'full count', data.full_count);
@@ -79,7 +93,9 @@ export default function GoodsList({ take, size, vid_modeli, product_group, minPr
           :
           <div>
             <div className='goods_wrapper'>
-              {data.data.length === 0 ? <h2>Ничего не нашлось</h2>
+              {data.data.length === 0 ? 
+                //changePage(1)
+                 <h2>Ничего не нашлось</h2>
                 : data.data.map((product) =>
                   <ProductCard product={product} key={'good_' + product.product_id + '/' + product.sum} />
                 )}
