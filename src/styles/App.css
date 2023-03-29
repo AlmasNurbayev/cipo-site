@@ -10,7 +10,7 @@ h1 {
 }
 
 .main_wrapper {
-  background-image: url('/src/assets/OBUV-83.jpg');
+  background-image: url('/src/assets/footer.jpg');
   background-position: top top;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -166,6 +166,10 @@ h1 {
     font-size: small;
 }
 
+.product_card_name {
+  /* font-size: small; */
+}
+
 .News_wrapper {
   padding: 10px;
   display: flex;  
@@ -205,6 +209,7 @@ h1 {
 
 .hor1 {
 display: block;  
+margin-left: 10px;
 }
 
 .ver1 {
@@ -225,6 +230,7 @@ display: block;
 .group_wrapper {
   width: 200px;
   display: block;
+  margin-left: 10px;
 }
 
 .sort_wrapper {
@@ -240,31 +246,33 @@ display: block;
 
 .search_input {
   width: 200px;
+  height: 25px;
   background: transparent;
   border:1px solid #ef6419;
-  
+  margin-left: 10px;
+  border-radius: 5px;
 }
 
 .search_clear {
   position: relative;
   background: transparent;
   border:1px solid #ef6419;
-  width: 40px;
+  width: 25px;
 }
 
 .sort_div {
   display: flex;
   
   position: absolute;
-  right: 10px
-
+  right: 10px;
 }
 
 .inputSort {
   width: 200px;
   background: transparent;
   border:1px solid #ef6419;
-
+  border-radius: 5px;
+  height: 25px;
 }
 
 .inner_btn {
@@ -312,4 +320,8 @@ display: block;
 
 .input_wrapper {
   display: flex;
+}
+
+._mb {
+  width: 150px;
 }

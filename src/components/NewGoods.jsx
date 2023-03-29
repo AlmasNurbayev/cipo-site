@@ -33,7 +33,7 @@ export default function NewGoods() {
         }
 
       </div>
-      <Button onClick={(e) => goto(history, location, e, '', '/goods')}>Весь каталог</Button>  
+      <Button variant="danger" onClick={(e) => goto(history, location, e, '', '/goods')}>Весь каталог</Button>  
     </div>
     
   )

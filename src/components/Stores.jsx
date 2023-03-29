@@ -29,7 +29,7 @@ export default function Stores() {
         text += `Четверг: ` + data_day('d04')  + '\n' ;
         text += `Пятница: ` + data_day('d05')  + '\n' ;
         text += `Суббота: ` + data_day('d06')  + '\n' ;
-        text += `Воскресенье: ` + data_day('d07')  + '\n' ;
+        text += `Воскресенье: ` + data_day('d07')  + '  \n' ;
 
         return text;
     }

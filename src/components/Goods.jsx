@@ -43,8 +43,11 @@ export default function Goods({ data }) {
     const priceMaxRef = useRef();
 
     //console.log(data);
-    async function update(e) {
-
+    async function reset(e) {
+        
+        //e.preventDefault(); // не обновляются данные
+        e.target.reset();
+        //Goods(data);
     }
 
     function updateMinPrice(e) {
@@ -112,6 +115,7 @@ export default function Goods({ data }) {
 
     return (
         <div className='ver1'>
+            <Form onSubmit={(e) => reset(e)}>
             <div className='hor1'>
                 <div className='sort_wrapper'>
                     <Form.Control
@@ -150,7 +154,7 @@ export default function Goods({ data }) {
             <div className='vertical_wrapper'>
                     <div className='group_wrapper'>
                         <p>Сезоны:  </p>
-                        <ToggleButtonGroup vertical type="checkbox" defaultValue={'Все'} className="mb-2" >
+                        <ToggleButtonGroup vertical type="checkbox" defaultValue={'Все'} className="_mb" >
 
                             {product_group.map((e, index) =>
                                 <ToggleButton id={e.name_1c}  key={"tb_group_" + index} value={e.id} variant="outline-danger" onChange={(event) => updateFilter(event, product_group, setProductGroup)}>
@@ -161,16 +165,16 @@ export default function Goods({ data }) {
 
                         </ToggleButtonGroup>
                     
-                    <div className='vid_wrapper'>
+                    {/* <div className='vid_wrapper'> */}
                         <p>Модели:</p>
-                        <ToggleButtonGroup vertical type="checkbox" defaultValue={'Все'} className="mb-2">
+                        <ToggleButtonGroup vertical type="checkbox" defaultValue={'Все'} className="_mb">
                             {vid_modeli.map((e, index) =>
                                 <ToggleButton id={e.name_1c} key={"tb_vid_" + index} value={e.id} variant="outline-danger" onChange={(event) => updateFilter(event, vid_modeli, setVidModeli)}>
                                     {e.name_1c}
                                 </ToggleButton>
                             )}
                         </ToggleButtonGroup>
-                    </div>
+                    {/* </div> */}
                     <div className='price_wrapper'>
                         Цена:
                         <div className='range'>от:
@@ -181,13 +185,13 @@ export default function Goods({ data }) {
                             <Form.Range min="1" max="100000" value={maxPrice} onChange={(e) => updateMaxPrice(e)}
                                 ref={priceMaxRef}
                             />{maxPrice.toLocaleString('ru-RU')}</div>
-                                <Button onClick={update}>Сбросить фильтры (нужно доделать)</Button>
+                                <Button variant="danger" type='submit'>Сбросить фильтры</Button>
                     </div>
                     </div>
                     <GoodsList className='goodsList' product_group={product_group} vid_modeli={vid_modeli} size={size} take={20} sort={sort} search={search} minPrice={minPrice} maxPrice={maxPrice} initPage={1}/>                    
                 
                 </div>
-            
+                </Form>            
 
         </div>
     )

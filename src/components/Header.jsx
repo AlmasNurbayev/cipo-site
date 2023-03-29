@@ -51,9 +51,9 @@ export default function Header() {
                 <a className='menu_item' href="/" onClick={(e) => goto(history, location, e, 'stores_anchor', '/contacts')}>
                     Контакты
                 </a>
-                <a className='menu_item' href="/">
+                {/* <a className='menu_item' href="/">
                     О нас
-                </a>                
+                </a>                 */}
             </div>
 
             </div>

@@ -28,7 +28,7 @@ export default function SubscribeModal({ show, setShowSubscribe }) {
 
     async function send(e) {
         // валидация
-        e.preventDefault()
+        e.preventDefault();
         const formData = new FormData(e.target),
             formDataObj = Object.fromEntries(formData.entries())
         if (formDataObj.city === '' && formDataObj.phone === '') {
