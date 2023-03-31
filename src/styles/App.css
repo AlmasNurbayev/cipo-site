@@ -9,6 +9,16 @@
   font-size:small;
 }
 
+/* .switch:checked { Не работает
+  background-color: #ef6419 !important;
+}
+
+.switch:focus {
+  background-color: #ef6419 !important;
+} */
+
+
+
 h1 {
   font-size: 1.2em;
 }

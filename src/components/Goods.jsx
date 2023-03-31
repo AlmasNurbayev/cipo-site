@@ -148,8 +148,10 @@ export default function Goods({ data }) {
                 </div>  
                 <Form.Check 
                     type="switch"
-                    id="filter_btn"
+                    id="btn-check-2-outlined"
+                    bsSwitchPrefix={"switch"}
                     label="Фильтр по размерам, категориям"
+                    variant="outline-danger"
                     onChange={(e)=> toggleFilters()}
                 />
                 {/* <Button variant="danger" id='filter_btn' onClick={}>Фильтры...</Button> */}
