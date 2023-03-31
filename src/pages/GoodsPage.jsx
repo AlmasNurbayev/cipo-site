@@ -5,6 +5,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 import Header from '../components/Header';
 import Goods from '../components/Goods';
+import Contacts from '../components/Contacts';
 import { useFiltersQuery } from '../app/product.api';
 
 
@@ -29,7 +30,9 @@ export default function GoodsPage() {
                 <div>
                 <h1>Каталог</h1>
                 <Goods data={data}/>
+                <Contacts/>
                 </div>
+                
             }        
         
     </div>

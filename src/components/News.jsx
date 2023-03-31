@@ -27,20 +27,20 @@ export default function News() {
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
                 :
-                <CardGroup>
-                     <Row xs={1} md={2} className="g-4">
+                <CardGroup bsPrefix='news_group'>
+                     {/* <Row xs={2} md={3} className="g-4"> */}
                     {data.map((element, index) =>
-                        <Card key = {'NewsCard' + index} border="light" style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src={backend_url + '/' +element.image_path} width='150px' />
-                            <Card.Body>
+                        <Card key = {'NewsCard' + index} border="light" >
+                            <Card.Img bsPrefix='news_img' variant="top" src={backend_url + '/' +element.image_path} />
+                            <Card.Body >
                                 <Card.Title><h6>{element.title}</h6></Card.Title>
                                 <Card.Text>
-                                    {element.data.length > 80 ? element.data.slice(0,80) + '...' : element.data}
+                                    {element.data.length > 80 ? element.data.slice(0,100) + '...' : element.data}
                                 </Card.Text>
                             </Card.Body>
                         </Card> 
                     )}
-                    </Row>
+                    {/* </Row> */}
                 </CardGroup>
             }
 

@@ -61,7 +61,7 @@ export default function Header() {
                 <a href='/'>
                 <img className='logo_img' src={require('../assets/logo3.png')} alt='logo'/>
                 </a>
-                <div className='title'><h3>Качественная детская обувь из натуральных материалов</h3></div>
+                <div className='title'><b>Качественная детская обувь из натуральных материалов</b></div>
                 {/* <div className='title_basket'>
                     <img className='basket_img' src={require('../assets/basket.png')} alt='basket'/>
                 </div> */}

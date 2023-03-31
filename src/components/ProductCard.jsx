@@ -37,11 +37,11 @@ export default function ProductCard({ product }) {
             
 
             <Card style={{ width: '150px' }} key={'card_' + product.product_id} >
-                <Card.Img variant="top" src={backend_url + '/' + product.image_active_path} />
+                <Card.Img bsPrefix = '_card-img' variant="top" src={backend_url + '/' + product.image_active_path} />
                 <Card.Body style={{ height: '120px', padding: '5px' }}>
                     <Card.Title><h6>{product.vid_modeli_name}</h6></Card.Title>
                     <Card.Text>
-                        {product.name}
+                        <span className='.product_card_name'>{product.name}</span>
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush" >

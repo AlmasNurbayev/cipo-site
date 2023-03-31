@@ -5,6 +5,10 @@
   font-family: Roboto, sans-serif
 }
 
+.card-text {
+  font-size:small;
+}
+
 h1 {
   font-size: 1.2em;
 }
@@ -26,22 +30,15 @@ h1 {
   /* padding: 0 100px */
 }
 
-@media screen and (min-width:100px) and (max-width:500px) {
-  h3 {
-    font-size: 8rem;
-  }
 
-  .logo_img {
-    width: 80%;
-    height: 80%;
-  }
-
-  .basket_image {
-    width: 80%;
-    height: 80%;
-  }
+.news_group {
+  display: flex;
+  flex-wrap: wrap;  
 }
 
+.news_img-top {
+  width: 200px; 
+}
 
 .menu_line {
   /* display: flex; */
@@ -74,6 +71,7 @@ h1 {
   display: flex;
   color: #ef6419;
   align-items: center;
+  font-size: larger;
   /*Центрирование по вертикали */
   /* width: 700px; */
 }
@@ -100,7 +98,7 @@ h1 {
   /* Полупрозрачный фон */
   padding: 20px 20px 20px 30px;
   /* height: 200px; */
-  width: 70%;
+  width: 50%;
 }
 
 .features_ul {
@@ -177,7 +175,7 @@ h1 {
 }
 
 .Stores_wrapper {
-  padding: 10px;
+  padding: 5px;
   display: flex;  
   flex-wrap: wrap; 
 }
@@ -324,4 +322,80 @@ margin-left: 10px;
 
 ._mb {
   width: 150px;
+}
+
+#filter_btn {
+  /* display: none; */
+}
+
+.card {
+  width: 18rem;
+}
+
+@media screen and (min-width:100px) and (max-width:500px) {
+
+  .news_img-top {
+    width: 80px; 
+  }
+
+  .card-img-top {
+    width: 50%; 
+  }
+
+  ._card-img-top {
+    width: 90%; 
+  }
+
+  .news_group {
+    display:flex ;
+    flex-wrap: wrap; 
+  }
+
+  .logo_img {
+    width: 60%;
+    /* height: 80%; */
+  }
+
+  .features_btn1 {
+    width: 100px;
+    font-size: small;
+  }
+
+  .features_btn2 {
+    width: 100px;
+    font-size: small;
+  }
+
+  .group_wrapper {
+    width: 35%;
+  }
+
+  .basket_image {
+    width: 80%;
+    height: 80%;
+  }
+
+
+  .inputSort {
+    width: 100px;
+  }  
+
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;     
+  }
+
+  .pages_wrapper {
+    display: flex;
+    flex-wrap: wrap;  
+  }
+
+  #filter_btn {
+    display: block
+  }
+
+  .card {
+    width: 10rem;
+  }
+
 }
