@@ -51,10 +51,9 @@ export default function Goods({ data }) {
         //Goods(data);
     }
 
-    function toggleFilters() {
-        if (showFilter === 'inline') {setShowFilter('none')} 
+    function toggleFilters(e) {
+        if (e.target.checked === false) {setShowFilter('none')} 
         else {setShowFilter('inline')}
-        console.log(showFilter);
     }
 
     function updateMinPrice(e) {
@@ -148,12 +147,13 @@ export default function Goods({ data }) {
                 </div>  
                 <Form.Check 
                     type="switch"
-                    id="btn-check-2-outlined"
-                    bsSwitchPrefix={"switch"}
+                    id="custom-switch"
+                    // bsSwitchPrefix={"switch"}
                     label="Фильтр по размерам, категориям"
                     variant="outline-danger"
-                    onChange={(e)=> toggleFilters()}
+                    onChange={(e)=> toggleFilters(e)}
                 />
+                
                 {/* <Button variant="danger" id='filter_btn' onClick={}>Фильтры...</Button> */}
                 <div className='size_wrapper' ref={sizeRef} style={{display: showFilter}}>
                     Размеры:
