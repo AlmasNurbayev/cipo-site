@@ -34,7 +34,7 @@ export default function Features() {
             {showSubscribe ? <SubscribeModal show={showSubscribe} setShowSubscribe={setShowSubscribe}></SubscribeModal> : ''}
             <div className='features_wrapper_ul'>
 
-                <Accordion flush={false} defaultActiveKey="1">
+                <Accordion flush defaultActiveKey="1">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Почему стоит покупать у нас</Accordion.Header>
                         <Accordion.Body>

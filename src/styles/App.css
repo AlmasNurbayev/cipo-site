@@ -157,7 +157,7 @@ h1 {
 
 
 .NewsGoods_wrapper {
-  padding: 10px;
+  padding: 0px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -213,6 +213,7 @@ h1 {
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
+  /* width: 100%; */
 }
 
 .hor1 {
@@ -300,6 +301,7 @@ margin-left: 10px;
 
 .pages_wrapper {
   display:flex ;
+  flex-wrap: wrap;  
 }
 
 .page-item .page-link {
@@ -339,13 +341,13 @@ margin-left: 10px;
 }
 
 .card {
-  width: 18rem;
+  width: 150px;
 }
 
 @media screen and (min-width:100px) and (max-width:500px) {
 
   .news_img-top {
-    width: 80px; 
+    width: 90px; 
   }
 
   .card-img-top {
@@ -405,7 +407,7 @@ margin-left: 10px;
   }
 
   .card {
-    width: 10rem;
+    width: 145px;
   }
 
 }

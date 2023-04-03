@@ -36,7 +36,7 @@ export default function ProductCard({ product }) {
             {show ? <ProductModal show={show} product={product} OnHide={handleClose} setShow={setShow} id={'modal'+product.product_id}></ProductModal> : ''}
             
 
-            <Card style={{ width: '150px' }} key={'card_' + product.product_id} >
+            <Card className='ProductCard' key={'card_' + product.product_id} >
                 <Card.Img bsPrefix = '_card-img' variant="top" src={backend_url + '/' + product.image_active_path} />
                 <Card.Body style={{ height: '120px', padding: '5px' }}>
                     <Card.Title><h6>{product.vid_modeli_name}</h6></Card.Title>
