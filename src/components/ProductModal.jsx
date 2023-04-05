@@ -15,7 +15,7 @@ export default function ProductModal({ show, setShow, product }) {
 
     //const [show, setShow] = useState(show1);
     const { data, isLoading, error } = useStoresQuery();
-    console.log('show in modal ' + show);
+    //console.log('show in modal ' + show);
 
     function getStore(id) {
         let otvet = '';
