@@ -30,7 +30,7 @@ export default function Goods({ data }) {
         e.select = false;
     })
 
-    let [showFilter, setShowFilter] = useState('none');
+    let [checkedFilter, setCheckedFilter] = useState(false);
     let [product_group, setProductGroup] = useState(product_group_0);
     let [vid_modeli, setVidModeli] = useState(vid_modeli_0);
     let [size, setSize] = useState(size_0);
@@ -49,11 +49,6 @@ export default function Goods({ data }) {
         //e.preventDefault(); // не обновляются данные
         e.target.reset();
         //Goods(data);
-    }
-
-    function toggleFilters(e) {
-        if (e.target.checked === false) {setShowFilter('none')} 
-        else {setShowFilter('inline')}
     }
 
     function updateMinPrice(e) {
@@ -124,6 +119,16 @@ export default function Goods({ data }) {
             <Form onSubmit={(e) => reset(e)}>
             <div className='hor1'>
                 <div className='sort_wrapper'>
+                <ToggleButton
+                    className="mb-2"
+                    id="toggle-check"
+                    type="checkbox"
+                    variant={checkedFilter % 2 ? 'danger' : 'outline-danger'}
+                    checked={checkedFilter}
+                    // value={checkedFilter}
+                    //onChange={(e) => console.log(e.currentTarget.checked)}
+                    onChange={(e) => setCheckedFilter(e.currentTarget.checked)}
+                >Фильтр</ToggleButton>                       
                     <Form.Control
                         type="text"
                         ref={inputRef}
@@ -145,17 +150,9 @@ export default function Goods({ data }) {
                     
                     </div>
                 </div>  
-                <Form.Check 
-                    type="switch"
-                    id="custom-switch"
-                    // bsSwitchPrefix={"switch"}
-                    label="Фильтр по размерам, категориям"
-                    variant="outline-danger"
-                    onChange={(e)=> toggleFilters(e)}
-                />
-                
+             
                 {/* <Button variant="danger" id='filter_btn' onClick={}>Фильтры...</Button> */}
-                <div className='size_wrapper' ref={sizeRef} style={{display: showFilter}}>
+                <div className='size_wrapper' ref={sizeRef} style={checkedFilter ? {display: 'inline'} : {display: 'none'}}>
                     Размеры:
                     <ToggleButtonGroup type="checkbox" defaultValue={'Все'} bsPrefix="size_toggle_wrapper">
                         {size.map((e, index) =>
@@ -171,7 +168,7 @@ export default function Goods({ data }) {
             </div>
             <div className='vertical_wrapper' >
                 
-                    <div className='group_wrapper' style={{display: showFilter}}>
+                    <div className='group_wrapper' style={checkedFilter ? {display: 'inline'} : {display: 'none'}}>
                         <p>Сезоны:  </p>
                         <ToggleButtonGroup vertical type="checkbox" defaultValue={'Все'} className="_mb" >
 

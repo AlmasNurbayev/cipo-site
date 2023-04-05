@@ -12,6 +12,8 @@ import Accordion from 'react-bootstrap/Accordion';
 import Carousel from 'react-bootstrap/Carousel';
 import Spinner from 'react-bootstrap/Spinner';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 import { Link } from 'react-router-dom';
 import Contacts from './Contacts';
 // import Row from 'react-bootstrap/Row';
@@ -36,7 +38,7 @@ export default function ProductModal({ show, setShow, product }) {
 
     return (
         <div>
-            <Modal show={show} onHide={() => setShow(false)} product={product}>
+            <Modal show={show} onHide={() => setShow(false)} product={product} scrollable={true} size="sm"  >
                 <Modal.Header closeButton>
                     <Modal.Title><h6>{product.name}</h6></Modal.Title>
                 </Modal.Header>
@@ -63,42 +65,59 @@ export default function ProductModal({ show, setShow, product }) {
                     <p>артикул: {product.artikul}</p>
                     {product.material_podoshva ? <p>Материал подошвы: {product.material_podoshva}</p> : ''}
                     {product.material_up ? <p>Материал верха: {product.material_up}</p> : ''}
-                    {product.material_inside ? <p>Материал низа: {product.material_inside}</p> : ''}Доступные размеры:
-                    <ToggleButtonGroup type="radio" name="options" defaultValue={1} size='lg' id={'ButtonGroup' + product.product_id}>
-                        {product.qnt_price.map((e, index) =>
-                            <ToggleButton key={'szbtn' + product.product_id + index} type='checkbox' variant='light' style={{ padding: '5px' }} value={e.size} size='sm'>{e.size}</ToggleButton>
-                        )}
-                    </ToggleButtonGroup>
+                    {product.material_inside ? <p>Материал низа: {product.material_inside}</p> : ''}Размеры и наличие:
+          
+                        {/* {product.qnt_price.map((e, index) =>
+                            <span key={'szbtn' + product.product_id + index} style={{ padding: '5px' }} >{e.size}</span>
+                        )} */}
+                    <p></p>
                     {isLoading
                     ?
                     <Spinner animation="border" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </Spinner>
                     : 
-                    <Accordion defaultActiveKey="0">
-                        <Accordion.Item eventKey="1">
-                            <Accordion.Header>Ориентировочное наличие в магазинах</Accordion.Header>
-                            <Accordion.Body>
-                                {product.qnt_price.map((e, index) =>
-                                    <ListGroup key={'size'+e.size+'/'+e.store_id}>
-                                        <ListGroup.Item><h6>{'размер ' + e.size + ' в магазинах: '}</h6>
-                                            {e.store_id.map(store => <p>{getStore(store)}</p>)}
-                                        </ListGroup.Item> 
-                                    </ListGroup>
-                                )}
-                                Уточняйте наличие через <a href={'/Contacts'}>Whatsapp</a>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
+                    <Tabs
+                    id="uncontrolled-tab-example"
+                    className="mb-3"
+                    >        
+                     
+                     {product.qnt_price.map((e, index) =>                     
+                     <Tab eventKey={e.size} title={e.size}>
+                     {e.store_id.map(store => <p>{getStore(store)}</p>)}
+                     <p style={{textAlign:'right'}}>Уточняйте наличие через <a href={'/Contacts'}>Whatsapp</a></p>
+                   </Tab>
+                    )}
+                     
+                    
+                    </Tabs>
+
+                    // <Accordion defaultActiveKey="0">
+                    //     <Accordion.Item eventKey="1">
+                    //         <Accordion.Header>Ориентировочное наличие в магазинах</Accordion.Header>
+                    //         <Accordion.Body>
+                    //             {product.qnt_price.map((e, index) =>
+                    //                 <ListGroup key={'size'+e.size+'/'+e.store_id}>
+                    //                     <ListGroup.Item><h6>{'размер ' + e.size + ' в магазинах: '}</h6>
+                    //                         {e.store_id.map(store => <p>{getStore(store)}</p>)}
+                    //                     </ListGroup.Item> 
+                    //                 </ListGroup>
+                    //             )}
+                    //             Уточняйте наличие через <a href={'/Contacts'}>Whatsapp</a>
+                    //         </Accordion.Body>
+                    //     </Accordion.Item>
+                    // </Accordion>
                     }
-                </Modal.Body>
+                    {/* <Button variant="secondary" onClick={() => setShow(false)}>
+                        Close
+                    </Button> */}                    
                 <Modal.Footer>
                 Цена: <h4>
                         {product.sum.toLocaleString('ru-RU') + ' тенге'}</h4>
-                    {/* <Button variant="secondary" onClick={() => setShow(false)}>
-                        Close
-                    </Button> */}
-                </Modal.Footer>
+
+                </Modal.Footer>                    
+                </Modal.Body>
+
             </Modal>
         </div>
     )

@@ -44,6 +44,7 @@ h1 {
 .news_group {
   display: flex;
   flex-wrap: wrap;  
+  justify-content: center;
 }
 
 .news_img-top {
@@ -160,6 +161,7 @@ h1 {
   padding: 0px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .ProductCard_wrapper {
@@ -195,7 +197,7 @@ h1 {
   background-color: #ef6419;
   color: white;
   font-size: medium;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .social_wrapper {
@@ -213,6 +215,7 @@ h1 {
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   /* width: 100%; */
 }
 
@@ -264,9 +267,12 @@ margin-left: 10px;
 
 .search_clear {
   position: relative;
+  left: -25px;
   background: transparent;
-  border:1px solid #ef6419;
+  border: none;
+  /* border-radius: 3px; */
   width: 25px;
+  height: 25px;
 }
 
 .sort_div {
@@ -347,7 +353,7 @@ margin-left: 10px;
 @media screen and (min-width:100px) and (max-width:500px) {
 
   .news_img-top {
-    width: 90px; 
+    width: 120px; 
   }
 
   .card-img-top {
@@ -410,4 +416,11 @@ margin-left: 10px;
     width: 145px;
   }
 
+}
+
+.modal-content {
+  /* overflow-y: visible!important; */
+  min-height: 140%;
+  /* overflow:unset!important; */
+  /* max-height: max-content; */
 }
