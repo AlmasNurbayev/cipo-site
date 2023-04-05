@@ -77,7 +77,7 @@ export default function ProductModal({ show, setShow, product }) {
                      
                      {product.qnt_price.map((e, index) =>                     
                      <Tab eventKey={e.size} title={e.size}>
-                     {e.store_id.map(store => <p>{getStore(store)}</p>)}
+                     {e.store_id.map(store => <p key={'store_id'.store_id}>{getStore(store)}</p>)}
                      <p style={{textAlign:'right'}}>Уточняйте наличие через <a href={'/Contacts'}>Whatsapp</a></p>
                    </Tab>
                     )}

@@ -342,10 +342,6 @@ margin-left: 10px;
   width: 150px;
 }
 
-#filter_btn {
-  /* display: none; */
-}
-
 .card {
   width: 150px;
 }
@@ -353,13 +349,13 @@ margin-left: 10px;
 
 
 .modal-content {
-  /* overflow-y: visible!important; */
-  min-height: 140%;
+  overflow-y:hidden;
+  /* min-height: 140%; */
 
 }
 
 .modal-sm {
-  --bs-modal-width: 600px!important;
+  --bs-modal-width: 500px!important;
 }
 
 @media screen and (min-width:100px) and (max-width:500px) {
@@ -430,6 +426,12 @@ margin-left: 10px;
 
   .card {
     width: 145px;
+  }
+
+  .modal-content {
+    overflow-y:visible;
+    min-height: 140%;
+  
   }
 
 }
