@@ -1,21 +1,14 @@
 'useStrict';
 
 import React from 'react'
-import { useState } from 'react';
 import { backend_url } from '../app/product.api';
 import { useStoresQuery } from '../app/product.api';
 
 import Modal from 'react-bootstrap/Modal';
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import Accordion from 'react-bootstrap/Accordion';
 import Carousel from 'react-bootstrap/Carousel';
 import Spinner from 'react-bootstrap/Spinner';
-import ListGroup from 'react-bootstrap/ListGroup';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import { Link } from 'react-router-dom';
-import Contacts from './Contacts';
 // import Row from 'react-bootstrap/Row';
 
 export default function ProductModal({ show, setShow, product }) {

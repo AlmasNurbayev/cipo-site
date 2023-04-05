@@ -350,7 +350,23 @@ margin-left: 10px;
   width: 150px;
 }
 
+
+
+.modal-content {
+  /* overflow-y: visible!important; */
+  min-height: 140%;
+
+}
+
+.modal-sm {
+  --bs-modal-width: 600px!important;
+}
+
 @media screen and (min-width:100px) and (max-width:500px) {
+
+  .modal-sm {
+    --bs-modal-width: 300px!important;
+  }
 
   .news_img-top {
     width: 120px; 
@@ -418,9 +434,4 @@ margin-left: 10px;
 
 }
 
-.modal-content {
-  /* overflow-y: visible!important; */
-  min-height: 140%;
-  /* overflow:unset!important; */
-  /* max-height: max-content; */
-}
+
