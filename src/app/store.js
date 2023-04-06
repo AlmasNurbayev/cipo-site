@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 //import { curryGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
 import { setupListeners } from '@reduxjs/toolkit/query'
-import counterReducer from '../features/counter/counterSlice';
+//import counterReducer from '../features/counter/counterSlice';
 import { productApi } from './product.api';
 import { newsApi } from './product.api';
 import { storesApi } from './product.api';

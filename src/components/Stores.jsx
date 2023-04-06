@@ -1,7 +1,7 @@
 'useStrict';
 
 import React from 'react'
-import { useNewsQuery } from '../app/product.api.js'
+//import { useNewsQuery } from '../app/product.api.js'
 import { useStoresQuery } from '../app/product.api.js';
 
 import { backend_url } from '../app/product.api.js';
@@ -15,7 +15,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 export default function Stores() {
 
-    const { data, isLoading, error } = useStoresQuery();
+    const { data, isLoading  } = useStoresQuery();
 
     function working(data) {
 

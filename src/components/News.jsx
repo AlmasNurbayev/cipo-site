@@ -9,11 +9,11 @@ import { backend_url } from '../app/product.api.js';
 import Spinner from 'react-bootstrap/Spinner';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
-import Row from 'react-bootstrap/Row';
+//import Row from 'react-bootstrap/Row';
 
 export default function News() {
 
-    const { data, isLoading, error } = useNewsQuery(4);
+    const { data, isLoading } = useNewsQuery(4);
 
 
 

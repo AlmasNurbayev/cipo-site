@@ -9,7 +9,7 @@ import goto from '../routes/goto.js'
 
 export default function NewGoods() {
 
-  const { data, isLoading, error } = useProductsNewsQuery(15);
+  const { data, isLoading } = useProductsNewsQuery(15);
   
   const location = useLocation();
   const history = useNavigate();

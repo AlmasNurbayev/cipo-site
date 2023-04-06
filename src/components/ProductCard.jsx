@@ -25,10 +25,6 @@ export default function ProductCard({ product }) {
         //setModalID(product.product_id);
         setShow(true)};
         //console.log(show, modalID);
-    function go(id) {
-
-        //console.log(id);
-    }
 
     return (
         <div className='ProductCard_wrapper' id={'ProductCard_wrapper_' + product.product_id}>

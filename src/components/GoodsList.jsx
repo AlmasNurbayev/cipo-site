@@ -17,14 +17,14 @@ export default function GoodsList({ take, size, vid_modeli, product_group, minPr
 
   const [currentPage, setCurrentPage] = useState(1);
   const [skip, setSkip] = useState(0);
-  const [countPages, setCountPages] = useState(1);
-  const { data, isLoading, error, isFetching } = useProductsQuery({ skip: skip, take: take, product_group: product_group, vid_modeli: vid_modeli, size: size, sort: sort, search_name: search, minPrice: minPrice, maxPrice: maxPrice });
+  //const [countPages, setCountPages] = useState(1);
+  const { data, isLoading, error } = useProductsQuery({ skip: skip, take: take, product_group: product_group, vid_modeli: vid_modeli, size: size, sort: sort, search_name: search, minPrice: minPrice, maxPrice: maxPrice });
 
 
-  function notFound(newPage) {
-    setCurrentPage(newPage);
-    return (<h2>Ничего не нашлось</h2>)
-  }
+  // function notFound(newPage) {
+  //   setCurrentPage(newPage);
+  //   return (<h2>Ничего не нашлось</h2>)
+  // }
 
   function changePage(i) {
     setCurrentPage(i);

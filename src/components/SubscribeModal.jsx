@@ -12,11 +12,9 @@ export default function SubscribeModal({ show, setShowSubscribe }) {
     const [agree, setAgree] = useState(false);
     const [postContent, setPostContent] = useState();
     const [
-        createSubscribe, { data,
-            isLoading,
-            isSuccess,
-            isError,
-            error }
+        createSubscribe, { 
+            isLoading
+            }
     ] = useCreateSubscribeMutation();
 
     //console.log('show in modal', show);
