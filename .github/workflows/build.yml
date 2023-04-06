@@ -12,17 +12,12 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - name: get code
       - uses: actions/checkout@v3
-
-      - name: use Node
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run build   
-
-      - name: Sync files
       - uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.ftp_host }}
