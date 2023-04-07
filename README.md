@@ -6,9 +6,10 @@
 
 ## Применяемый стек
 
-React (react-create-app), react-router redux, RTK-query, react-bootstrap
-Размер загружаемого бандла на текущий момент составляет 700 кб. 
+React (react-create-app), react-router redux, RTK-query, react-bootstrap.
+Через github actions осуществляется автоматический build и deploy на хостинг.
 
+Размер загружаемого бандла на текущий момент составляет 700 кб, что объективно немало. 
 
 ## Хостинг
 
