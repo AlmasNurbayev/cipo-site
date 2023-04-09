@@ -69,6 +69,7 @@ export default function Goods({ data }) {
         setMaxPrice(newMax);
     }
 
+    // eslint-disable-next-line
     const searchDebounce = useCallback(
         debounce((text) => {
             setSearch(text);
