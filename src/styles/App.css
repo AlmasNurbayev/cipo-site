@@ -394,10 +394,14 @@ margin-left: 10px;
 .news_once {
   margin: 10px;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .news_img_once {
+  width: 90%;
   max-width: 400px;
+  
 }
 
 .news_text_once {
@@ -482,7 +486,7 @@ margin-left: 10px;
   }
 
   .card {
-    width: 145px;
+    width: 40%;
   }
 
   .modal-content {
