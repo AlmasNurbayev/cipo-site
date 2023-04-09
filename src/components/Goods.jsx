@@ -108,7 +108,7 @@ export default function Goods({ data }) {
             }
             set(temp);
         }
-        console.log('set ', temp);
+        //console.log('set ', temp);
 
     }
 

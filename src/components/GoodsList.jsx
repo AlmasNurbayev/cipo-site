@@ -70,10 +70,8 @@ export default function GoodsList({ take, size, vid_modeli, product_group, minPr
         pages_obj.push(<Pagination.Item onClick={() => changePage(i)} key={'page' + i} active={false}>{i}</Pagination.Item>)
       }
     }
-    if (data.data.length === 0) {
-      console.log('data 0');  
-    }
-    console.log('currentPage', currentPage);
+
+    //console.log('currentPage', currentPage);
     //console.log('pages ', pages_arr, 'full count', data.full_count);
 
   }
