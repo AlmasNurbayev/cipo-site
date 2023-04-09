@@ -69,7 +69,7 @@ export default function Goods({ data }) {
         setMaxPrice(newMax);
     }
 
-    const searchDebounce = useCallback(()=>
+    const searchDebounce = useCallback(
         debounce((text) => {
             setSearch(text);
             console.log(text);

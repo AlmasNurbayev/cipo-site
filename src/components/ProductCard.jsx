@@ -1,10 +1,10 @@
 'useStrict';
 
 import React from 'react';
-import { useState } from 'react';
+//import { useState } from 'react';
 
 import { backend_url } from '../app/product.api';
-import ProductModal from './ProductModal';
+//import ProductModal from './ProductModal';
 
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -17,11 +17,11 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function ProductCard({ product }) {
-    //const [checked, setChecked] = useState(false);
-    const [show, setShow] = useState(false);
-    //const [modalID, setModalID] = useState(0);
+    
+    //const [show, setShow] = useState(false);
+    
 
-    const handleClose = () => setShow(false);
+    //const handleClose = () => setShow(false);
     // const handleShow = () => {
     //     //setModalID(product.product_id);
     //     setShow(true)};
@@ -31,7 +31,7 @@ export default function ProductCard({ product }) {
     return (
         <div className='ProductCard_wrapper' id={'ProductCard_wrapper_' + product.product_id}>
 
-            {show ? <ProductModal show={show} product={product} OnHide={handleClose} setShow={setShow} id={'modal'+product.product_id}></ProductModal> : ''}
+            {/* {show ? <ProductModal show={show} product={product} OnHide={handleClose} setShow={setShow} id={'modal'+product.product_id}></ProductModal> : ''} */}
             
 
             <Card className='ProductCard' key={'card_' + product.product_id} >
