@@ -24,18 +24,18 @@ h1 {
 }
 
 .main_wrapper {
+}
+
+.header {
   background-image: url('/src/assets/footer.jpg');
   background-position: top top;
   background-repeat: no-repeat;
   background-size: 100%;
-}
-
-.header {
 
   /* display: block; */
   /* justify-content: space-between; */
   align-items: top;
-  height: 250px;
+  /* height: 130px; */
   
   /* padding: 0 100px */
 }
@@ -107,13 +107,13 @@ h1 {
   margin-right: 20px;
   background: rgba(255, 255, 255, 0.8);
   /* Полупрозрачный фон */
-  padding: 20px 20px 20px 30px;
+  padding: 10px 10px 10px 10px;
   /* height: 200px; */
   width: 50%;
 }
 
 .features_ul {
-  font-size: smaller;
+  font-size: 0.8rem;
   margin-top: 20px;
 }
 
@@ -129,7 +129,7 @@ h1 {
   font-size: medium;
   cursor: pointer;
   width: 160px;
-  height: 100px;
+  height: 50px;
 }
 
 .features_btn2 {
@@ -139,7 +139,8 @@ h1 {
   font-size: medium;
   cursor: pointer;
   width: 160px;
-  height: 100px;
+  height: 50px;
+  text-align: center;
 }
 
 .features_wrapper_btn {
@@ -358,6 +359,25 @@ margin-left: 10px;
   --bs-modal-width: 500px!important;
 }
 
+.main_product {
+  margin-top: 10PX;
+  display: flex;
+  flex-wrap: wrap;  
+}
+
+.left_product {
+  width: 400px;
+}
+
+.right_product {
+  margin: 10px;
+  
+}
+
+.tabs {
+  width: 500px;
+}
+
 @media screen and (min-width:100px) and (max-width:500px) {
 
   .modal-sm {
@@ -386,13 +406,18 @@ margin-left: 10px;
     /* height: 80%; */
   }
 
+
+  .accordion-button {
+    font-size: small!important;
+  }
+
   .features_btn1 {
-    width: 100px;
+    max-width: 90px;
     font-size: small;
   }
 
   .features_btn2 {
-    width: 100px;
+    max-width: 90px;
     font-size: small;
   }
 
@@ -431,9 +456,18 @@ margin-left: 10px;
   .modal-content {
     overflow-y:visible;
     min-height: 140%;
-  
   }
 
-}
+  .Block_wrapper {
+    min-height: 140%;
+    padding: 10px;
+  }
 
+
+
+  .tabs {
+    width: 100%;
+  }  
+
+}
 

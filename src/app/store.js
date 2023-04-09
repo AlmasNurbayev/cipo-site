@@ -8,6 +8,7 @@ import { storesApi } from './product.api';
 import { filtersApi } from './product.api';
 import { productsApi } from './product.api';
 import { subscribeApi } from './subscribe.api';
+import { productIDApi } from './product.api';
 
 
 export const store = configureStore({
@@ -18,8 +19,9 @@ export const store = configureStore({
     [filtersApi.reducerPath]: filtersApi.reducer,
     [productsApi.reducerPath]: productsApi.reducer,
     [subscribeApi.reducerPath]: subscribeApi.reducer,
+    [productIDApi.reducerPath]: productIDApi.reducer,
   },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productApi.middleware).concat(newsApi.middleware).concat(storesApi.middleware).concat(filtersApi.middleware).concat(productsApi.middleware).concat(subscribeApi.middleware)
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productApi.middleware).concat(newsApi.middleware).concat(storesApi.middleware).concat(filtersApi.middleware).concat(productsApi.middleware).concat(subscribeApi.middleware).concat(productIDApi.middleware)
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors

@@ -55,8 +55,17 @@ export const productsApi = createApi({
     })
 })
 
+export const productIDApi = createApi({
+    reducerPath: 'product',
+    baseQuery: fetchBaseQuery({ baseUrl: backend_url }),
+    endpoints: (builder) => ({
+        productID: builder.query({ query: (id) => `api/product?id=${id}` })
+    })
+})
+
 export const { useProductsNewsQuery } = productApi;
 export const { useNewsQuery } = newsApi;
 export const { useStoresQuery } = storesApi;
 export const { useFiltersQuery } = filtersApi;
 export const { useProductsQuery } = productsApi;
+export const { useProductIDQuery } = productIDApi;

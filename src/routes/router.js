@@ -8,6 +8,7 @@ import Main from "../pages/MainPage";
 import GoodsPage from "../pages/GoodsPage";
 import ErrorPage from "../pages/ErrorPage";
 import ContactsPage from '../pages/ContactsPage'
+import GoodPage from "../pages/GoodPage";
 
 
 
@@ -17,6 +18,7 @@ export const publicRoutes = createBrowserRouter([
     {path: '/stores', element: <ContactsPage/>},
     {path: '/contacts', element: <ContactsPage/>},
     {path: '/goods', element: <GoodsPage/>},
+    {path: '/good/:id', element: <GoodPage/>},
     {path: '/', element: <Main title='Главная'/>, exact:true},
     {path: '*', element: <ErrorPage/>, exact:true},
 ])

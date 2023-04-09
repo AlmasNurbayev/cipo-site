@@ -11,6 +11,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -25,6 +26,7 @@ export default function ProductCard({ product }) {
         //setModalID(product.product_id);
         setShow(true)};
         //console.log(show, modalID);
+    const router = useNavigate();
 
     return (
         <div className='ProductCard_wrapper' id={'ProductCard_wrapper_' + product.product_id}>
@@ -50,7 +52,8 @@ export default function ProductCard({ product }) {
                     </ListGroup.Item>
                     <ListGroup.Item style={{ padding: '5px' }}>
                         <p>Цена: {product.sum.toLocaleString('ru-RU')}</p>
-                        <Button variant="light" onClick={handleShow}>Подробнее</Button>
+                        {/* <Button variant="light" onClick={handleShow}>Подробнее</Button> */}
+                        <Button variant="light" onClick={() => router(`/good/${product.product_id}`)}>Подробнее</Button>
                     </ListGroup.Item>
 
                 </ListGroup>
