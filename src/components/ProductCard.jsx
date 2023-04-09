@@ -22,9 +22,9 @@ export default function ProductCard({ product }) {
     //const [modalID, setModalID] = useState(0);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => {
-        //setModalID(product.product_id);
-        setShow(true)};
+    // const handleShow = () => {
+    //     //setModalID(product.product_id);
+    //     setShow(true)};
         //console.log(show, modalID);
     const router = useNavigate();
 
