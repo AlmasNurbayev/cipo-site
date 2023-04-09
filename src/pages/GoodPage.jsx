@@ -60,10 +60,10 @@ export default function GoodPage() {
                 </Carousel>
               </div>
               <div className="right_product">
-                <p>сезон: {data.product_group.name_1c}</p>
+                <p key='1'>сезон: {data.product_group.name_1c}</p>
                 {data.vid_modeli ? <p>вид обуви: {data.vid_modeli.name_1c}</p> : ''}
-                <p>id: {data.id}</p>
-                <p>артикул: {data.artikul}</p>
+                <p key='2'>id: {data.id}</p>
+                <p key='3'>артикул: {data.artikul}</p>
                 {data.material_podoshva ? <p>материал подошвы: {data.material_podoshva}</p> : ''}
                 {data.material_up ? <p>материал верха: {data.material_up}</p> : ''}
                 {data.material_inside ? <p>материал низа: {data.material_inside}</p> : ''}<b>Размеры, цены, наличие:</b>
@@ -82,10 +82,10 @@ export default function GoodPage() {
                         >
 
                             {data.qnt_price_registry_group.map((e, index) =>
-                                <Tab eventKey={e.size_name_1c} title={e.size_name_1c}>
-                                    <p>Цена: {e.sum.toLocaleString('ru-RU') + ' тенге'}</p>
-                                    <p>В наличии:</p>
-                                    {e.store_id.map(store => <p key={'store_id'.store_id}>{getStore(store)}</p>)}
+                                <Tab key={e.size_name_1c} eventKey={e.size_name_1c} title={e.size_name_1c}>
+                                    <p key={'p'+e.size_name_1c}>Цена: {e.sum.toLocaleString('ru-RU') + ' тенге'}</p>
+                                    <p key={'p2'+e.size_name_1c}>В наличии:</p>
+                                    {e.store_id.map(store => <p key={'store_id'+store}>{getStore(store)}</p>)}
                                 </Tab>
                             )}
 

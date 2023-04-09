@@ -39,9 +39,9 @@ export default function News() {
                             <Card.Img bsPrefix='news_img' variant="top" src={backend_url + '/' +element.image_path} />
                             <Card.Body >
                                 <Card.Title><h6>{element.title}</h6></Card.Title>
-                                <Card.Text>
-                                   <div dangerouslySetInnerHTML= {{__html: element.data.length > 80 ? element.data.slice(0,80) + '...' : element.data}}></div> 
-                                </Card.Text>
+                                {/* <Card.Text> */}
+                                   <div className='card-text' dangerouslySetInnerHTML= {{__html: element.data.length > 80 ? element.data.slice(0,80) + '...' : element.data}}></div> 
+                                {/* </Card.Text> */}
                                 {/* <Card.Footer> */}
                                     <Button variant="light" onClick={() => router(`/newsID/${element.id}`)}>Подробнее</Button>
                                 {/* </Card.Footer> */}

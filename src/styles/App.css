@@ -356,7 +356,7 @@ margin-left: 10px;
 }
 
 .card {
-  width: 150px;
+  width: 180px;
   margin: 0 10px;
 }
 
@@ -410,6 +410,26 @@ margin-left: 10px;
 
 @media screen and (min-width:100px) and (max-width:500px) {
 
+  h6 {
+    font-size: 0.9rem!important;
+  }
+
+  .btn {
+    font-size: 0.9rem!important;
+  }
+  
+  .card-body {
+    padding: 0px!important;
+  }
+
+  .card-title {
+    padding-top: 5px;
+  }
+
+
+  .News_wrapper {
+    padding: 5px 0px;
+  }
 
   .search_input {
       width: 40%; 
@@ -429,7 +449,7 @@ margin-left: 10px;
   }
 
   ._card-img-top {
-    width: 90%; 
+    width: 95%; 
   }
 
   .news_group {
@@ -486,7 +506,7 @@ margin-left: 10px;
   }
 
   .card {
-    width: 40%;
+    width: 120px;
   }
 
   .modal-content {
@@ -502,6 +522,7 @@ margin-left: 10px;
   .ProductCard_wrapper {
     margin-left: 0px;
     margin-right: 0px;
+    
   }
 
 
