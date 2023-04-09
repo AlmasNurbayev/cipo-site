@@ -135,8 +135,8 @@ export default function Goods({ data }) {
                         ref={inputRef}
                         id="inputSearch"
                         bsPrefix='search_input'
-                        placeholder="поиск по названию..."
-                        aria-describedby="поиск по названию..."
+                        placeholder="поиск..."
+                        aria-describedby="поиск..."
                         onChange={(event) => searching(event)}
                     />
                     <Button bsPrefix="search_clear" onClick={clearSearch}>X</Button>

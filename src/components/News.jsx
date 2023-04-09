@@ -9,9 +9,14 @@ import { backend_url } from '../app/product.api.js';
 import Spinner from 'react-bootstrap/Spinner';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import  Button  from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
+
 //import Row from 'react-bootstrap/Row';
 
 export default function News() {
+
+    const router = useNavigate();
 
     const { data, isLoading } = useNewsQuery(4);
 
@@ -35,8 +40,11 @@ export default function News() {
                             <Card.Body >
                                 <Card.Title><h6>{element.title}</h6></Card.Title>
                                 <Card.Text>
-                                    {element.data.length > 80 ? element.data.slice(0,100) + '...' : element.data}
+                                   <div dangerouslySetInnerHTML= {{__html: element.data.length > 80 ? element.data.slice(0,80) + '...' : element.data}}></div> 
                                 </Card.Text>
+                                {/* <Card.Footer> */}
+                                    <Button variant="light" onClick={() => router(`/newsID/${element.id}`)}>Подробнее</Button>
+                                {/* </Card.Footer> */}
                             </Card.Body>
                         </Card> 
                     )}

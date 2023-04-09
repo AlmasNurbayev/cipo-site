@@ -9,8 +9,7 @@ import GoodsPage from "../pages/GoodsPage";
 import ErrorPage from "../pages/ErrorPage";
 import ContactsPage from '../pages/ContactsPage'
 import GoodPage from "../pages/GoodPage";
-
-
+import NewsPage from "../pages/NewsPage";
 
 export const publicRoutes = createBrowserRouter([
     //{path: '/product/:id', element: <PostPage/>, exact:true},
@@ -19,6 +18,7 @@ export const publicRoutes = createBrowserRouter([
     {path: '/contacts', element: <ContactsPage/>},
     {path: '/goods', element: <GoodsPage/>},
     {path: '/good/:id', element: <GoodPage/>},
+    {path: '/newsID/:id', element: <NewsPage/>},
     {path: '/', element: <Main title='Главная'/>, exact:true},
     {path: '*', element: <ErrorPage/>, exact:true},
 ])

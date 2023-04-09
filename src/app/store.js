@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 //import { curryGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
 import { setupListeners } from '@reduxjs/toolkit/query'
 //import counterReducer from '../features/counter/counterSlice';
-import { productApi } from './product.api';
+import { newsIDApi, productApi } from './product.api';
 import { newsApi } from './product.api';
 import { storesApi } from './product.api';
 import { filtersApi } from './product.api';
@@ -20,8 +20,17 @@ export const store = configureStore({
     [productsApi.reducerPath]: productsApi.reducer,
     [subscribeApi.reducerPath]: subscribeApi.reducer,
     [productIDApi.reducerPath]: productIDApi.reducer,
+    [newsIDApi.reducerPath]: newsIDApi.reducer,
   },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productApi.middleware).concat(newsApi.middleware).concat(storesApi.middleware).concat(filtersApi.middleware).concat(productsApi.middleware).concat(subscribeApi.middleware).concat(productIDApi.middleware)
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+    .concat(productApi.middleware)
+    .concat(newsApi.middleware)
+    .concat(storesApi.middleware)
+    .concat(filtersApi.middleware)
+    .concat(productsApi.middleware)
+    .concat(subscribeApi.middleware)
+    .concat(productIDApi.middleware)
+    .concat(newsIDApi.middleware)
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors
