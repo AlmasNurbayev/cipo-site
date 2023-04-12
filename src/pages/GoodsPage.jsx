@@ -29,7 +29,7 @@ export default function GoodsPage() {
                 : 
                 <div>
                 <h1>Каталог</h1>
-                <Goods data={data}/>
+                <Goods data_f={data}/>
                 <Contacts/>
                 </div>
                 

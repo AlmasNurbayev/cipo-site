@@ -91,7 +91,7 @@ export default function GoodPage() {
 
                           
                         </Tabs>
-                        <p style={{ textAlign: 'right' }}>Уточняйте наличие через <a href={'/Contacts'}>Whatsapp</a></p>
+                        <p style={{ textAlign: 'right' }}>Уточняйте наличие через <a href={'https://wa.me/77788121260'}>Whatsapp</a></p>
                         </div>
                     }
                 <p></p>

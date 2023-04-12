@@ -394,21 +394,29 @@ margin-left: 10px;
 .news_once {
   margin: 10px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
+}
+
+.news_img {
+  max-width: 300px;
 }
 
 .news_img_once {
-  width: 90%;
-  max-width: 400px;
-  
+    /* max-width: 40%; */
+  /* max-width: 300px; */
 }
 
 .news_text_once {
+  text-align: auto;
   margin: 10px;
 }
 
-@media screen and (min-width:100px) and (max-width:500px) {
+.news_text_once ul {
+  display: block;
+  
+}
+
+@media screen and (min-width:100px) and (max-width:600px) {
 
   h6 {
     font-size: 0.9rem!important;
@@ -418,6 +426,17 @@ margin-left: 10px;
     font-size: 0.9rem!important;
   }
   
+  .news_once {
+    margin: 10px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: left;
+  }
+
+  .news_img {
+    max-width: 90%;
+  }
+
   .card-body {
     padding: 0px!important;
   }

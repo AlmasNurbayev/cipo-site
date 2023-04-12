@@ -16,11 +16,13 @@ export const publicRoutes = createBrowserRouter([
     //{path: '/logout', element: <Logout/>, exact:true},
     {path: '/stores', element: <ContactsPage/>},
     {path: '/contacts', element: <ContactsPage/>},
-    {path: '/goods', element: <GoodsPage/>},
-    {path: '/good/:id', element: <GoodPage/>},
-    {path: '/newsID/:id', element: <NewsPage/>},
+    {path: '/goods/filter?', element: <GoodsPage/>, exact:true},
+    {path: '/good/:id', element: <GoodPage/>, exact:true},
+    {path: '/newsID/:id', element: <NewsPage/>, exact:true},
     {path: '/', element: <Main title='Главная'/>, exact:true},
-    {path: '*', element: <ErrorPage/>, exact:true},
+    {path: '*', element: <ErrorPage/>},
 ])
+
+//?size=2713, 2714&product_group=1152,1154&minPrice=20000&maxPrice=42000&take=10&skip=10&sort=product_create_date-asc
 
 

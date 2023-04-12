@@ -6,21 +6,70 @@ import Pagination from 'react-bootstrap/Pagination';
 
 import { useProductsQuery } from '../app/product.api';
 import Spinner from 'react-bootstrap/Spinner';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react'
+import qs from 'qs';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-export default function GoodsList({ take, size, vid_modeli, product_group, minPrice, maxPrice, sort, search, initPage }) {
+export default function GoodsList({ take: take, product_group: product_group, vid_modeli: vid_modeli, size: size, sort: sort, search_name: search_name, minPrice: minPrice, maxPrice: maxPrice }) {
 
-  product_group = transArray(product_group);
-  vid_modeli = transArray(vid_modeli);
-  size = transArray(size);
+  // product_group = transArray(product_group);
+  // vid_modeli = transArray(vid_modeli);
+  // size = transArray(size);
+
+  const navigate = useNavigate();  
+
+  const [urlParams, setUrlParams] = useSearchParams();
+  // for (const p of urlParams) {
+  //   console.log(p);
+  // }
+  console.log({  product_group: product_group, vid_modeli: vid_modeli, size: size, sort: sort, search_name: search_name });
+  
+  //console.log(window.location.search);
+ 
+  
+  //{ skip, take, product_group, vid_modeli, size, sort, search_name, minPrice, maxPrice } = qs.parse(urlParams.getAll);
+
+  //console.log(urlParams.get('size'));
+  //const size = urlParams.get('size');
+  
+  //skip = Number(urlParams.get('skip'));
+   take = Number(urlParams.get('take'));
+   console.log(take);
+  // const product_group = urlParams.get('product_group');
+  // const vid_modeli = urlParams.get('vid_modeli');
+  // const search_name = urlParams.get('search_name');
+   minPrice = Number(urlParams.get('minPrice'));
+   maxPrice = Number(urlParams.get('maxPrice'));
+  // const sort = urlParams.get('sort');
+  
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [skip, setSkip] = useState(0);
+  const [skip, setSkip] = useState(Number(urlParams.get('skip')));
   //const [countPages, setCountPages] = useState(1);
-  const { data, isLoading, error } = useProductsQuery({ skip: skip, take: take, product_group: product_group, vid_modeli: vid_modeli, size: size, sort: sort, search_name: search, minPrice: minPrice, maxPrice: maxPrice });
+  const { data, isLoading, error } = useProductsQuery({ skip: skip, take: take, product_group: product_group, vid_modeli: vid_modeli, size: size, sort: sort, search_name: search_name, minPrice: minPrice, maxPrice: maxPrice });
+
+  useEffect(()=>{
+    const queryString = qs.stringify({ // формируем URL исходя из параметров
+        size: size,
+        product_group: product_group,
+        vid_modeli: vid_modeli,
+        minPrice: minPrice,
+        maxPrice: maxPrice,
+        skip: skip,
+        search_name: search_name,
+        sort: sort,
+        take: take,
+    }, { encode: false });
+    navigate('?'+queryString); // передаем в URL браузера
+    
+     //console.log(queryString);
+}, [data]);
 
 
+
+
+  
   // function notFound(newPage) {
   //   setCurrentPage(newPage);
   //   return (<h2>Ничего не нашлось</h2>)
@@ -41,6 +90,7 @@ export default function GoodsList({ take, size, vid_modeli, product_group, minPr
   function transArray(array) {
     let temp = [];
     array.forEach(e => {
+      temp.push(e.id);
       if (e.hasOwnProperty('select')) {
         if (e.select === true) {
           temp.push(e.id);

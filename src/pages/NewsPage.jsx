@@ -28,7 +28,10 @@ export default function NewsPage() {
           <div className='Block_wrapper'>
             <div className='par'>{data.title}</div>
             <div className='news_once'>
-              <img className='news_img_once' alt={data.image_path} variant="top" src={backend_url + '/' + data.image_path} />
+              <div className='news_img_once' >
+                <img className='news_img' alt={data.image_path} variant="top" src={backend_url + '/' + data.image_path} />
+              </div>
+              
               <div className='news_text_once' dangerouslySetInnerHTML={{ __html: data.data}}></div>
             </div>
             <Contacts />
