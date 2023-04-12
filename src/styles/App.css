@@ -20,9 +20,6 @@ h1 {
   font-size: 1.2em;
 }
 
-.main_wrapper {
-}
-
 .header {
   background-image: url('/src/assets/footer.jpg');
   background-position: top top;
@@ -174,9 +171,6 @@ h1 {
     font-size: small;
 }
 
-.product_card_name {
-  /* font-size: small; */
-}
 
 .News_wrapper {
   padding: 10px;
@@ -399,11 +393,6 @@ margin-left: 10px;
 
 .news_img {
   max-width: 300px;
-}
-
-.news_img_once {
-    /* max-width: 40%; */
-  /* max-width: 300px; */
 }
 
 .news_text_once {

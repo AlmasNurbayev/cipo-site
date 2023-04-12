@@ -1,19 +1,19 @@
 'useStrict';
 
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import debounce from 'lodash.debounce';
 
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import qs from 'qs';
+//import qs from 'qs';
 
 //import { Slider } from 'antd';
 
 //import ProductCard from './ProductCard';
 import { sortArray } from './sortArray';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useProductsQuery } from '../app/product.api';
 import Pagination from 'react-bootstrap/Pagination';
 import Spinner from 'react-bootstrap/Spinner';
@@ -36,23 +36,23 @@ export default function Goods({ data_f }) {
     let [search, setSearch] = useState();
     let [minPrice, setMinPrice] = useState(1);
     let [maxPrice, setMaxPrice] = useState(100000);
-    let [take, setTake] = useState(20);
+    let [take ] = useState(20);
     const [skip, setSkip] = useState(0);
 
     const inputRef = useRef();
     const priceMinRef = useRef();
     const priceMaxRef = useRef();
     const sizeRef = useRef();
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams ] = useSearchParams();
 
 
-    let location = useLocation();
+    //let location = useLocation();
 
-    useEffect(() => {
-        console.log('location search', location.search);
+    //useEffect(() => {
+        //console.log('location search', location.search);
         //setSearchParams({size: size});
         //setSearchParams({take: take});
         //if (!location.search) {
@@ -70,7 +70,7 @@ export default function Goods({ data_f }) {
         // navigate({pathname: '/goods', search: '?' + queryString}); // передаем в URL браузера
         // console.log('navigate ' + queryString);
         // //}
-    }, [size, product_group, vid_modeli, minPrice, maxPrice, skip, search, sort, take]);
+    //}, [size, product_group, vid_modeli, minPrice, maxPrice, skip, search, sort, take]);
 
 
     //searchParams.get('size');
