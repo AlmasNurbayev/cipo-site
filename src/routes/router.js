@@ -10,6 +10,9 @@ import ErrorPage from "../pages/ErrorPage";
 import ContactsPage from '../pages/ContactsPage'
 import GoodPage from "../pages/GoodPage";
 import NewsPage from "../pages/NewsPage";
+import AuthPage from "../pages/AuthPage";
+import RegisterPage from "../pages/RegisterPage";
+import CrmPage from "../pages/CrmPage";
 
 export const publicRoutes = createBrowserRouter([
     //{path: '/product/:id', element: <PostPage/>, exact:true},
@@ -19,6 +22,9 @@ export const publicRoutes = createBrowserRouter([
     {path: '/goods/filter?', element: <GoodsPage/>, exact:true},
     {path: '/good/:id', element: <GoodPage/>, exact:true},
     {path: '/newsID/:id', element: <NewsPage/>, exact:true},
+    {path: '/crm', element: <CrmPage/>},
+    {path: '/register', element: <RegisterPage/>},
+    {path: '/auth', element: <AuthPage/>},
     {path: '/', element: <Main title='Главная'/>, exact:true},
     {path: '*', element: <ErrorPage/>},
 ])

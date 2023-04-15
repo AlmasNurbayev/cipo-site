@@ -19,4 +19,13 @@ export const subscribeApi = createApi({
     })
 })
 
+export const subscribeGetApi = createApi({
+    reducerPath: 'getSubscribe',
+    baseQuery: fetchBaseQuery({ baseUrl: backend_url }),
+    endpoints: (builder) => ({
+        getSubscribe: builder.query({ query: (count) => `api/subscribes` })
+    })
+})
+
+export const { useGetSubscribeQuery } = subscribeGetApi;
 export const { useCreateSubscribeMutation } = subscribeApi;

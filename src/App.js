@@ -9,6 +9,7 @@ import { store } from './app/store';
 import { RouterProvider } from 'react-router-dom';
 //import { Route, Routes } from 'react-router-dom';
 import { publicRoutes } from './routes/router';
+import './firebase';
 
 
 
