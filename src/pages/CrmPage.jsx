@@ -3,7 +3,7 @@ import React from 'react'
 import Header from '../components/Header'
 import Contacts from '../components/Contacts'
 import { useAuth } from '../hooks/useAuth'
-import { Navigate, Redirect, useNavigate } from 'react-router-dom';
+import { Navigate  } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { removeUser } from '../app/slices/userSlice';
 import { Button } from 'react-bootstrap';

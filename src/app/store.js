@@ -10,7 +10,7 @@ import { productsApi } from './product.api';
 import { subscribeApi, subscribeGetApi } from './subscribe.api';
 import { productIDApi } from './product.api';
 import userReducer from './slices/userSlice'
-import {userSlice} from './slices/userSlice';
+//import {userSlice} from './slices/userSlice';
 
 export const store = configureStore({
   reducer: {

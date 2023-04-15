@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, Navigate, redirect, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import Contacts from '../components/Contacts'
 import { useDispatch } from 'react-redux'
