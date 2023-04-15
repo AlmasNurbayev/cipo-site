@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 export default function SubscribeManage() {
-    const { data, isLoading, error } = useGetSubscribeQuery();
+    const { data, isLoading } = useGetSubscribeQuery();
 
 
 

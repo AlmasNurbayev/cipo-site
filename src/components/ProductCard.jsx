@@ -11,7 +11,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 //import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 export default function ProductCard({ product }) {
     
@@ -23,7 +23,7 @@ export default function ProductCard({ product }) {
     //     //setModalID(product.product_id);
     //     setShow(true)};
         //console.log(show, modalID);
-    const router = useNavigate();
+    //const router = useNavigate();
 
     return (
         <div className='ProductCard_wrapper' id={'ProductCard_wrapper_' + product.product_id}>
