@@ -10,11 +10,8 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
-
-
-
 
 export default function ProductCard({ product }) {
     
@@ -53,7 +50,8 @@ export default function ProductCard({ product }) {
                     <ListGroup.Item style={{ padding: '5px' }}>
                         <p>Цена: {product.sum.toLocaleString('ru-RU')}</p>
                         {/* <Button variant="light" onClick={handleShow}>Подробнее</Button> */}
-                        <Button variant="light" onClick={() => router(`/good/${product.product_id}`)}>Подробнее</Button>
+                        {/* <Button variant="light" onClick={() => router(`/good/${product.product_id}`)}>Подробнее</Button> */}
+                        <a href={`/good/${product.product_id}`}>Подробнее</a>
                     </ListGroup.Item>
 
                 </ListGroup>
