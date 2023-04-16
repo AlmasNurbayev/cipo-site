@@ -36,6 +36,7 @@ export default function SubscribeModal({ show, setShowSubscribe }) {
         const body = {
             email: formDataObj.email,
             phone: formDataObj.phone,
+            name: formDataObj.name,
             city: formDataObj.city,
             district: formDataObj.district,
             agree: formDataObj.agree,
@@ -83,8 +84,12 @@ export default function SubscribeModal({ show, setShowSubscribe }) {
                             {/* <Form.Label>Телефон: </Form.Label> */}
                             <Form.Control type="tel" name='phone' placeholder="Введите номер телефона" />
                         </Form.Group>
+                        <Form.Group required={true} className="mb-3 input_wrapper" id="name">
+                            <Form.Control type="text" name='name' placeholder="Ваше имя" />
+                        </Form.Group>    
                         <Form.Group className="mb-3 input_wrapper" id="other">
                             {/* <Form.Label>Телефон: </Form.Label> */}
+                            
                             <Form.Control type="text" name='city' placeholder="Ваш город" />
                             <Form.Control type="text" name='district' placeholder="Район города" />
                         </Form.Group>
