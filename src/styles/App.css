@@ -122,7 +122,7 @@ h1 {
   border: none;
   font-size: medium;
   cursor: pointer;
-  width: 160px;
+  width: 140px;
   height: 50px;
 }
 
@@ -132,7 +132,7 @@ h1 {
   border: none;
   font-size: medium;
   cursor: pointer;
-  width: 160px;
+  width: 140px;
   height: 50px;
   text-align: center;
 }
@@ -412,10 +412,40 @@ margin-left: 10px;
   max-width: 400px
 }
 
+.features_buttons {
+  display: flex;
+}
+
 @media screen and (min-width:100px) and (max-width:600px) {
 
   h6 {
     font-size: 0.9rem!important;
+  }
+
+  .features_wrapper { 
+    display: block;
+  }
+
+  .features_wrapper_ul {
+    width: 90%;
+  }
+
+  .features_buttons {
+    justify-content: center;
+  }
+
+  .features_btn1 {
+    max-width: 95px;
+    font-size: small;
+  }
+
+  .features_btn2 {
+    max-width: 95px;
+    font-size: small;
+  }  
+
+  .title {
+    font-size: small;
   }
 
   .btn {
@@ -482,15 +512,7 @@ margin-left: 10px;
     font-size: small!important;
   }
 
-  .features_btn1 {
-    max-width: 90px;
-    font-size: small;
-  }
 
-  .features_btn2 {
-    max-width: 90px;
-    font-size: small;
-  }
 
   .group_wrapper {
     width: 30%;

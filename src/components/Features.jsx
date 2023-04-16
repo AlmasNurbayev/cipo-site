@@ -1,7 +1,7 @@
 'useStrict';
 
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import Accordion from 'react-bootstrap/Accordion';
 import { useState } from 'react';
@@ -28,7 +28,7 @@ export default function Features() {
 
 
     //console.log(showSubscribe);
- 
+
     return (
         <div className='features_wrapper'>
             {showSubscribe ? <SubscribeModal show={showSubscribe} setShowSubscribe={setShowSubscribe}></SubscribeModal> : ''}
@@ -52,20 +52,26 @@ export default function Features() {
 
             </div>
             <div>
-                {/* <Link to="/Contacts"> */}
-                <button className='features_btn1' onClick={e => goto(e,'stores_anchor', '/contacts')}>Где купить</button>
-                    
-                {/* </Link> */}
-                {/* <button className='features_btn'>Заказать онлайн</button> */}
-            </div>
-            <div>
-                {/* <Link to="/Contacts"> */}
-                <button  className='features_btn2' onClick={() => setShowSubscribe(true)}>Подписаться...</button>
-                
-                {/* </Link> */}
-                {/* <button className='features_btn'>Заказать онлайн</button> */}
-            </div>
+                <div className='features_buttons'> 
+                    <div>
+                        <button className='features_btn1' onClick={e => goto(e, 'stores_anchor', '/contacts')}>Где купить</button>
+                    </div>
+                    <div>
+                        <button className='features_btn2' onClick={() => setShowSubscribe(true)}>Подписаться...</button>
+                    </div>
+                    <div>
+                        <Link to='https://wa.me/77788121260'>
+                        <button className='features_btn1' >
+                        <a href="https://wa.me/77788121260"><img width='40px' src={require('../assets/contacts/whatsapp2.png')} alt='whatsapp'/></a>
+                        </button>
+                        </Link>
+                    </div>
 
+                </div>
+                {/* <div>
+                    <a href="https://wa.me/77788121260"><img width='40px' src={require('../assets/contacts/whatsapp2.png')} alt='whatsapp'/></a>
+                </div> */}
+            </div>
         </div>
     )
 }
