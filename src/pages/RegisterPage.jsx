@@ -5,9 +5,11 @@ import Contacts from '../components/Contacts';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import FormUser from '../components/FormUser';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 import { setUser } from '../app/slices/userSlice'
 import Alert from 'react-bootstrap/Alert';
+import axios from 'axios';
+import { backend_url_crm } from '../app/product.api';
 
 
 export default function RegisterPage() {
@@ -18,25 +20,19 @@ export default function RegisterPage() {
   function handleRegister(event, email, password) {
     event.preventDefault();
 
-    const auth = getAuth();
+    axios.post(backend_url_crm + '/api/user/create', {
+      email: email,
+      password: password
+    })
+    .then(function (response) {
+      setMessage('Регистрация прошла успешно! Необходимо войти в систему ' + email);
+      setTimeout(() => navigate('/auth'), 2000);      
+      console.log(response);
+    })
+    .catch(function (error) {
+      setMessage('Возникла ошибка: ' + String(error));
+    });
 
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        console.log(user);
-        dispatch(setUser({
-          email: user.email,
-          id: user.uid,
-          token: user.accessToken
-        }));
-        setMessage('Регистрация прошла успешно! ' + email);
-        setTimeout(() => navigate('/crm'), 2000);
-
-      })
-      .catch(error => {
-        console.log(error);
-        setMessage('Возникла ошибка: ' + String(error));
-      });
   }
 
   return (

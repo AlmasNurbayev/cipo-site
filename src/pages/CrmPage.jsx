@@ -7,12 +7,19 @@ import { Navigate  } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { removeUser } from '../app/slices/userSlice';
 import { Button } from 'react-bootstrap';
-import SubscribeManage from '../components/CRM/SubscribeManage';
+//import ClientManage from '../components/CRM/ClientManage';
+import ClientManage from '../components/CRM/ClientManage2';
 
 export default function CrmPage() {
 
     const { isAuth, email } = useAuth();
     const dispatch = useDispatch();
+
+    function logout() {
+        dispatch(removeUser());
+        //setTimeout(() => , 1000);
+        //Navigate('/auth');
+        }
 
 
     console.log(isAuth);
@@ -23,8 +30,8 @@ export default function CrmPage() {
                 <Header />
                 <div className='Block_wrapper'>
                     <h3>CRM page</h3>
-                    <SubscribeManage></SubscribeManage>
-                    <Button onClick={() => dispatch(removeUser())} >Выйти из пользователя: {email}</Button>
+                    <ClientManage></ClientManage>
+                    <Button onClick={() => logout()} >Выйти из пользователя: {email}</Button>
                 </div>
 
                 <Contacts />

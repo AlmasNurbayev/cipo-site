@@ -44,7 +44,7 @@ export default function GoodPage() {
             <div className='par'>{data.name}</div>
             <div className="main_product">
               <div className="left_product">
-                <Carousel>
+                <Carousel variant="dark">
                   {data.image_registry.map((e, index) =>
                     <Carousel.Item key={'carousel' + index + data.id}>
                       <a href={backend_url + '/' + e.full_name}>

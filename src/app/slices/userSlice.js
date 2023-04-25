@@ -14,8 +14,6 @@ export const userSlice = createSlice({
             state.email = action.payload.email;
             state.token = action.payload.token;
             state.id = action.payload.id;
-            localStorage.setItem('token', action.payload.token);        
-            localStorage.setItem('email', action.payload.email);                 
         },
         removeUser(state) {
             state.email = null;

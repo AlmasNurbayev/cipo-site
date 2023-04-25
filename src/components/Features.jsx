@@ -1,7 +1,7 @@
 'useStrict';
 
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Accordion from 'react-bootstrap/Accordion';
 import { useState } from 'react';
@@ -60,11 +60,11 @@ export default function Features() {
                         <button className='features_btn2' onClick={() => setShowSubscribe(true)}>Подписаться...</button>
                     </div>
                     <div>
-                        <Link to='https://wa.me/77788121260'>
+                        {/* <Link to='https://wa.me/77788121260'> */}
                         <button className='features_btn1' >
                         <a href="https://wa.me/77788121260"><img width='40px' src={require('../assets/contacts/whatsapp2.png')} alt='whatsapp'/></a>
                         </button>
-                        </Link>
+                        {/* </Link> */}
                     </div>
 
                 </div>
