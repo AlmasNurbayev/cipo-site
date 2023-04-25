@@ -14,7 +14,7 @@ export default function PaginationCRM({ totalCount, updateSkip }) {
   
   
   //console.log('items', items);
-  const endOffset = itemOffset + itemsPerPage;
+  //const endOffset = itemOffset + itemsPerPage;
   //console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   // const currentItems = items.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);

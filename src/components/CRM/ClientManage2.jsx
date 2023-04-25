@@ -1,12 +1,12 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 //import axios from 'axios/dist/browser/axios.cjs';
 //import { useGetSubscribeQuery } from '../../app/subscribe.api';
 import Spinner from 'react-bootstrap/Spinner';
 
 import { useGetAllClientQuery } from '../../app/client.api';
-import debounce from 'lodash.debounce';
+//import debounce from 'lodash.debounce';
 import Alert from 'react-bootstrap/Alert';
-import PaginationCRM from './PaginationCRM';
+//import PaginationCRM from './PaginationCRM';
 import MaterialReactTable from 'material-react-table';
 import { IconButton, Tooltip } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
@@ -25,7 +25,7 @@ export default function ClientManage() {
   //let [skip, setSkip] = useState(0);
 
 
-  const inputRef = useRef();
+  //const inputRef = useRef();
 
 
   const query = { filters: JSON.stringify(columnFilters ?? []), columnFilters, size: pagination.pageSize, start: `${pagination.pageIndex * pagination.pageSize}` };

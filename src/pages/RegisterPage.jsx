@@ -3,17 +3,17 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import Contacts from '../components/Contacts';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+//import { useDispatch } from 'react-redux';
 import FormUser from '../components/FormUser';
 
-import { setUser } from '../app/slices/userSlice'
+//import { setUser } from '../app/slices/userSlice'
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import { backend_url_crm } from '../app/product.api';
 
 
 export default function RegisterPage() {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
 
