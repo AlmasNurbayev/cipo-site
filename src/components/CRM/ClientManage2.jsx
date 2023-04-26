@@ -8,7 +8,7 @@ import { useGetAllClientQuery, usePatchClientMutation } from '../../app/client.a
 import Alert from 'react-bootstrap/Alert';
 //import PaginationCRM from './PaginationCRM';
 import MaterialReactTable from 'material-react-table';
-import { IconButton, Tooltip } from '@mui/material';
+import { IconButton } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { Box } from '@mui/material';
 import {
