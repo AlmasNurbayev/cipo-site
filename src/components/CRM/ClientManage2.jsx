@@ -40,7 +40,7 @@ export default function ClientManage() {
   const [
     patchClient
   ] = usePatchClientMutation();
-  const [showClientCreate, setShowClientCreate]  = useState(false);
+  const [showClientCreate, setShowClientCreate] = useState(false);
 
 
   console.log('columnFilters', JSON.stringify(columnFilters));
@@ -87,22 +87,22 @@ export default function ClientManage() {
         accessorKey: 'sms_send',
         header: 'sms_send',
         filterVariant: 'checkbox',
-        accessorFn: (row) => JSON.stringify(row.subscribe[row.subscribe.length-1]),
+        accessorFn: (row) => JSON.stringify(row.subscribe[row.subscribe.length - 1]),
         Cell: ({ cell }) => (
           <span>{send_view(cell.getValue(), 'sms_send')}
           </span>
-        ),        
+        ),
       },
       {
         accessorKey: 'email_send',
         header: 'email_send',
         filterVariant: 'checkbox',
-        accessorFn: (row) => JSON.stringify(row.subscribe[row.subscribe.length-1]),
+        accessorFn: (row) => JSON.stringify(row.subscribe[row.subscribe.length - 1]),
         Cell: ({ cell }) => (
           <span>{send_view(cell.getValue(), 'email_send')}
           </span>
-        ),        
-      },      
+        ),
+      },
 
 
     ],
@@ -110,47 +110,54 @@ export default function ClientManage() {
   );
 
   async function patch({ exitEditingMode, row, values }) {
-    
+
     //const id = values.id;
     const body = {
       id: Number(values.id),
       email: values.email === '' ? null : values.email,
-      phone: values.phone  === '' ? null : values.phone,
-      name: values.name  === '' ? null : values.name,
-      city: values.city  === '' ? null : values.city,
-      district: values.district  === '' ? null : values.district,
-      wish: values.wish  === '' ? null : values.wish,
+      phone: values.phone === '' ? null : values.phone,
+      name: values.name === '' ? null : values.name,
+      city: values.city === '' ? null : values.city,
+      district: values.district === '' ? null : values.district,
+      wish: values.wish === '' ? null : values.wish,
       //subscribe: row.original.subscribe
-  }
-  setPostContent('');
-  
-//  console.log('id',id);
-  let res = await patchClient(body);
+    }
 
-  if (res.hasOwnProperty('error')) {
+
+
+    setPostContent('');
+
+    //  console.log('id',id);
+    let res = await patchClient(body);
+
+    if (res.hasOwnProperty('error')) {
       setPostContent(
-          <div className="alert alert-danger" role="alert">
-              Возникла ошибка {JSON.stringify(res.error)}
-          </div>
+        <div className="alert alert-danger" role="alert">
+          Возникла ошибка {JSON.stringify(res.error)}
+        </div>
       )
       //console.log(JSON.stringify(res));
-  };
-  if (res.hasOwnProperty('data')) {
+    };
+    if (res.hasOwnProperty('data')) {
       setPostContent(
-          <div className="alert alert-success" role="alert">
-              Данные изменены
-          </div>
+        <div className="alert alert-success" role="alert">
+          Данные изменены
+        </div>
       )
       refetch();
-  };     
-  exitEditingMode(); //required to exit editing mode   
+    };
+    exitEditingMode(); //required to exit editing mode   
 
 
-  }  
+  }
+
+  async function deleteClient(row) {
+    console.log(row);
+  }
 
 
 
- function send_view(val, prop) {
+  function send_view(val, prop) {
 
     if (typeof val === 'string') {
       val = JSON.parse(val);
@@ -161,10 +168,10 @@ export default function ClientManage() {
         } else {
           return 'false'
         }
-      } else {return ''}
-    } 
-    
- }    
+      } else { return '' }
+    }
+
+  }
 
   return (
     <div>Client Manage
@@ -208,7 +215,7 @@ export default function ClientManage() {
                 //enableRowActions
                 editingMode="modal" //default
                 enableEditing
-                onEditingRowSave={patch}                
+                onEditingRowSave={patch}
                 renderRowActions={({ row, table }) => (
                   <Box sx={{ display: 'flex', flexWrap: 'nowrap', gap: '8px' }}>
                     {/* <IconButton
@@ -225,7 +232,7 @@ export default function ClientManage() {
                       color="secondary"
                       onClick={() => {
                         table.setEditingRow(row);
-                        patch(row);
+                        //patchClient(row);
                       }}
                     >
                       <EditIcon />
@@ -233,7 +240,8 @@ export default function ClientManage() {
                     <IconButton
                       color="error"
                       onClick={() => {
-              
+                        console.log(row);
+                        deleteClient(row);
                       }}
                     >
                       <DeleteIcon />
@@ -262,11 +270,11 @@ export default function ClientManage() {
                     <IconButton onClick={refetch}>
                       <RefreshIcon />
                     </IconButton>
-                    
+
                     <IconButton onClick={() => setShowClientCreate(true)}>
                       <CreateIcon />
-                    </IconButton>                  
-                    </div>
+                    </IconButton>
+                  </div>
                 )}
                 rowCount={data.totalCount ?? 0}
                 state={{

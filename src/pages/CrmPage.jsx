@@ -9,6 +9,8 @@ import { removeUser } from '../app/slices/userSlice';
 import { Button } from 'react-bootstrap';
 //import ClientManage from '../components/CRM/ClientManage';
 import ClientManage from '../components/CRM/ClientManage2';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 
 export default function CrmPage() {
 
@@ -30,6 +32,7 @@ export default function CrmPage() {
     return (
         !isAuth ? <Navigate to='/auth' /> :
             <div>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <Header />
                 <div className='Block_wrapper'>
                     <h3>CRM page</h3>
@@ -40,6 +43,7 @@ export default function CrmPage() {
                 </div>
 
                 <Contacts />
+                </LocalizationProvider>
             </div>
     )
 }

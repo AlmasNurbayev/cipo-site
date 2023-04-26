@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Spinner from 'react-bootstrap/Spinner';
 import { useCreateClientMutation } from '../../app/client.api.js';
+import { DatePicker } from '@mui/x-date-pickers';
 
 
 export default function ClientCreateModal({ show, setShowClientCreate }) {
@@ -24,7 +25,7 @@ export default function ClientCreateModal({ show, setShowClientCreate }) {
         e.preventDefault();
         const formData = new FormData(e.target),
             formDataObj = Object.fromEntries(formData.entries())
-        if (formDataObj.city === '' && formDataObj.phone === '') {
+        if (formDataObj.email === '' && formDataObj.phone === '') {
             alert('Необходимо ввести email или телефон');
         }
 
@@ -34,7 +35,9 @@ export default function ClientCreateModal({ show, setShowClientCreate }) {
             name: formDataObj.name,
             city: formDataObj.city,
             district: formDataObj.district,
-            wish: formDataObj.wish
+            wish: formDataObj.wish,
+            sms_send: formDataObj.sms_send.checked,
+            email_send: formDataObj.email_send,
         }
         setPostContent('');
         let res = await createClient(body);
@@ -42,7 +45,7 @@ export default function ClientCreateModal({ show, setShowClientCreate }) {
         if (res.hasOwnProperty('error')) {
             setPostContent(
                 <div className="alert alert-danger" role="alert">
-                    Возникла ошибка (например email или телефон уже есть в базе) {JSON.stringify(res.error)}
+                    Возникла ошибка  {JSON.stringify(res.error)}
                 </div>
             )
             //console.log(JSON.stringify(res));
@@ -50,7 +53,7 @@ export default function ClientCreateModal({ show, setShowClientCreate }) {
         if (res.hasOwnProperty('data')) {
             setPostContent(
                 <div className="alert alert-success" role="alert">
-                    Спасибо, данные отправлены
+                    Данные записаны
                 </div>
             )
         };
@@ -90,8 +93,14 @@ export default function ClientCreateModal({ show, setShowClientCreate }) {
                         <Form.Group className="mb-3 input_wrapper" id="other">
                             <Form.Control as="textarea" rows={3} type="text" name='wish' placeholder="Пожелания" />
                         </Form.Group>
-                        <Form.Check type="checkbox" name='sms_send' label="SMS-рассылка" />
-                        <Form.Check type="checkbox" name='email_send' label="Email-рассылка" />
+                        <Form.Group className="mb-3 input_wrapper">
+                            <Form.Check type="checkbox" name='sms_send' label="SMS-рассылка" />
+                            <DatePicker label="дата окончания" name="sms_send_date"/>
+                        </Form.Group>    
+                        <Form.Group className="mb-3 input_wrapper">
+                            <Form.Check type="checkbox" name='email_send' label="Email-рассылка" />
+                            <DatePicker label="дата окончания" name="email_send_date"/>
+                        </Form.Group>
 
                     </Modal.Body>
                     <Modal.Footer>

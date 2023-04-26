@@ -29,7 +29,7 @@ export default function SubscribeModal({ show, setShowSubscribe }) {
         e.preventDefault();
         const formData = new FormData(e.target),
             formDataObj = Object.fromEntries(formData.entries())
-        if (formDataObj.city === '' && formDataObj.phone === '') {
+        if (formDataObj.email === '' && formDataObj.phone === '') {
             alert('Необходимо ввести email или телефон');
         }
 
