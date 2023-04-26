@@ -30,12 +30,25 @@ export const clientApi = createApi({
             params: { ...obj }
           }
         }
-      })
+      }),
+      patchClient: build.mutation({
+        query(body) {
+          return {
+            url: '/api/client/' + String(body.id),
+            headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            },          
+            method: 'PATCH',
+            body
+          }
+        }
+        })
+      ,      
     
   })
 })
 
 
-
+export const { usePatchClientMutation } = clientApi;
 export const { useCreateClientMutation } = clientApi;
 export const { useGetAllClientQuery } = clientApi;

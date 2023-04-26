@@ -17,8 +17,11 @@ export default function CrmPage() {
 
     function logout() {
         dispatch(removeUser());
+        localStorage.removeItem('email');
+        localStorage.removeItem('token');
+        
         //setTimeout(() => , 1000);
-        //Navigate('/auth');
+        
         }
 
 
@@ -31,7 +34,9 @@ export default function CrmPage() {
                 <div className='Block_wrapper'>
                     <h3>CRM page</h3>
                     <ClientManage></ClientManage>
-                    <Button onClick={() => logout()} >Выйти из пользователя: {email}</Button>
+                    <Button onClick={() => 
+                        logout()
+                    } >Выйти из пользователя: {email}</Button>
                 </div>
 
                 <Contacts />

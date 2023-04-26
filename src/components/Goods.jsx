@@ -186,8 +186,8 @@ export default function Goods({ data_f }) {
     if (!isLoading) {
 
         if (skip !== 0 && data.data.length === 0) {
-            //   setSkip(0);
-            //   setCurrentPage(1);
+               setSkip(0);
+               setCurrentPage(1);
         }
         // массив страниц
         //pages_obj.push(<Pagination onClick={setCurrentPage(currentPage-1)} key={'page<'} page={currentPage-1} active={true}></Pagination>)

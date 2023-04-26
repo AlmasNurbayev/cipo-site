@@ -3,14 +3,20 @@ import React, { useMemo, useState } from 'react'
 //import { useGetSubscribeQuery } from '../../app/subscribe.api';
 import Spinner from 'react-bootstrap/Spinner';
 
-import { useGetAllClientQuery } from '../../app/client.api';
+import { useGetAllClientQuery, usePatchClientMutation } from '../../app/client.api';
 //import debounce from 'lodash.debounce';
 import Alert from 'react-bootstrap/Alert';
 //import PaginationCRM from './PaginationCRM';
 import MaterialReactTable from 'material-react-table';
 import { IconButton, Tooltip } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
-
+import { Box } from '@mui/material';
+import {
+  Edit as EditIcon,
+  Delete as DeleteIcon,
+  Add as CreateIcon
+} from '@mui/icons-material';
+import ClientCreateModal from './ClientCreateModal';
 
 export default function ClientManage() {
 
@@ -30,6 +36,12 @@ export default function ClientManage() {
 
   const query = { filters: JSON.stringify(columnFilters ?? []), columnFilters, size: pagination.pageSize, start: `${pagination.pageIndex * pagination.pageSize}` };
   const { data, refetch, isLoading, error, isError, isFetching } = useGetAllClientQuery(query);
+  const [postContent, setPostContent] = useState('');
+  const [
+    patchClient
+  ] = usePatchClientMutation();
+  const [showClientCreate, setShowClientCreate]  = useState(false);
+
 
   console.log('columnFilters', JSON.stringify(columnFilters));
   console.log('globalFilter', JSON.stringify(globalFilter));
@@ -97,12 +109,53 @@ export default function ClientManage() {
     [],
   );
 
+  async function patch({ exitEditingMode, row, values }) {
+    
+    //const id = values.id;
+    const body = {
+      id: Number(values.id),
+      email: values.email === '' ? null : values.email,
+      phone: values.phone  === '' ? null : values.phone,
+      name: values.name  === '' ? null : values.name,
+      city: values.city  === '' ? null : values.city,
+      district: values.district  === '' ? null : values.district,
+      wish: values.wish  === '' ? null : values.wish,
+      //subscribe: row.original.subscribe
+  }
+  setPostContent('');
+  
+//  console.log('id',id);
+  let res = await patchClient(body);
+
+  if (res.hasOwnProperty('error')) {
+      setPostContent(
+          <div className="alert alert-danger" role="alert">
+              Возникла ошибка {JSON.stringify(res.error)}
+          </div>
+      )
+      //console.log(JSON.stringify(res));
+  };
+  if (res.hasOwnProperty('data')) {
+      setPostContent(
+          <div className="alert alert-success" role="alert">
+              Данные изменены
+          </div>
+      )
+      refetch();
+  };     
+  exitEditingMode(); //required to exit editing mode   
+
+
+  }  
+
+
+
  function send_view(val, prop) {
 
     if (typeof val === 'string') {
       val = JSON.parse(val);
       if (val.hasOwnProperty(prop)) {
-        console.log('val', val);
+        //console.log('val', val);
         if (val[prop]) {
           return 'true'
         } else {
@@ -140,9 +193,54 @@ export default function ClientManage() {
                 {/* <PaginationCRM totalCount={data.totalCount} updateSkip={setSkip} /> */}
               </div>
               {data.data.length === 0 ? <h5>Нет данных</h5> : ''}
+              {showClientCreate ? <ClientCreateModal show={showClientCreate} setShowClientCreate={setShowClientCreate}></ClientCreateModal> : ''}
+              {postContent !== '' ?
+
+                <Alert key={'success'} variant={String(postContent).slice(0, 1) === 'Д' ? 'success' : 'danger'} dismissible>
+                  {postContent}
+                </Alert>
+
+                : ''}
+
               <MaterialReactTable
                 columns={columns}
                 data={data?.data ?? []} //data is undefined on first render
+                //enableRowActions
+                editingMode="modal" //default
+                enableEditing
+                onEditingRowSave={patch}                
+                renderRowActions={({ row, table }) => (
+                  <Box sx={{ display: 'flex', flexWrap: 'nowrap', gap: '8px' }}>
+                    {/* <IconButton
+                      color="primary"
+                      onClick={() =>
+                        window.open(
+                          `mailto:kevinvandy@mailinator.com?subject=Hello ${row.original.firstName}!`,
+                        )
+                      }
+                    >
+                      <EmailIcon />
+                    </IconButton> */}
+                    <IconButton
+                      color="secondary"
+                      onClick={() => {
+                        table.setEditingRow(row);
+                        patch(row);
+                      }}
+                    >
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton
+                      color="error"
+                      onClick={() => {
+              
+                      }}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </Box>
+                )}
+
                 initialState={{ showColumnFilters: true }}
                 manualFiltering
                 manualPagination
@@ -160,11 +258,15 @@ export default function ClientManage() {
                 onPaginationChange={setPagination}
                 onSortingChange={setSorting}
                 renderTopToolbarCustomActions={() => (
-                  <Tooltip arrow title="Refresh Data">
+                  <div>
                     <IconButton onClick={refetch}>
                       <RefreshIcon />
                     </IconButton>
-                  </Tooltip>
+                    
+                    <IconButton onClick={() => setShowClientCreate(true)}>
+                      <CreateIcon />
+                    </IconButton>                  
+                    </div>
                 )}
                 rowCount={data.totalCount ?? 0}
                 state={{
@@ -176,6 +278,7 @@ export default function ClientManage() {
                   showProgressBars: isFetching,
                   sorting,
                 }}
+
               />              {/* <PaginationCRM totalCount={data.totalCount} updateSkip={updateSkip} /> */}
             </div>
           }
