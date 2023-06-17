@@ -11,6 +11,8 @@ import { subscribeApi, subscribeGetApi } from './subscribe.api';
 import { productIDApi } from './product.api';
 import userReducer from './slices/userSlice'
 import { clientApi } from './client.api';
+import { subscribeCRMApi } from './subscribeCRM.api';
+import { mobizonApi } from './mobizon.api';
 //import {userSlice} from './slices/userSlice';
 
 export const store = configureStore({
@@ -25,7 +27,9 @@ export const store = configureStore({
     [productIDApi.reducerPath]: productIDApi.reducer,
     [newsIDApi.reducerPath]: newsIDApi.reducer,
     [subscribeGetApi.reducerPath]: subscribeGetApi.reducer,
-    [clientApi.reducerPath]: clientApi.reducer
+    [clientApi.reducerPath]: clientApi.reducer,
+    [subscribeCRMApi.reducerPath]: subscribeCRMApi.reducer,
+    [mobizonApi.reducerPath]: mobizonApi.reducer,
   },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware()
     .concat(productApi.middleware)
@@ -38,6 +42,8 @@ export const store = configureStore({
     .concat(newsIDApi.middleware)
     .concat(subscribeGetApi.middleware)
     .concat(clientApi.middleware)
+    .concat(subscribeCRMApi.middleware)
+    .concat(mobizonApi.middleware)
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors

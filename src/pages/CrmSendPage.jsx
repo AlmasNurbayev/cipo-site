@@ -11,9 +11,10 @@ import { Button } from 'react-bootstrap';
 import ClientManage from '../components/CRM/ClientManage2';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import SendingManage from '../components/CRM/SendingManage';
 import Menu from '../components/CRM/Menu';
 
-export default function CrmPage() {
+export default function CrmClientsPage() {
 
     const { isAuth, email } = useAuth();
     const dispatch = useDispatch();
@@ -37,7 +38,8 @@ export default function CrmPage() {
                 <Header />
                 <div className='Block_wrapper'>
                     <h3>CRM</h3>
-                    <Menu></Menu>                    
+                    <Menu></Menu>                     
+                    <SendingManage></SendingManage>
                     <div style={{marginTop: '20px'}}><Button onClick={() => 
                         logout()
                     } >Выйти из пользователя: {email}</Button>

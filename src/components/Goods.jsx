@@ -1,6 +1,6 @@
 'useStrict';
 
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState, useEffect } from 'react'
 import debounce from 'lodash.debounce';
 
 import ToggleButton from 'react-bootstrap/ToggleButton';
@@ -26,18 +26,22 @@ export default function Goods({ data_f }) {
     let product_group_0 = structuredClone(data_f.product_group);
     let vid_modeli_0 = structuredClone(data_f.vid_modeli);
     let size_0 = structuredClone(data_f.size);
+    
+    const [searchParams, setSearchParams ] = useSearchParams();
 
 
+    const [currentPage, setCurrentPage] = useState(searchParams.get('currentPage') ? Number(searchParams.get('currentPage')) : 1);
     let [checkedFilter, setCheckedFilter] = useState(false);
-    let [product_group, setProductGroup] = useState([]);
-    let [vid_modeli, setVidModeli] = useState([]);
-    let [size, setSize] = useState([]);
-    let [sort, setSort] = useState();
-    let [search, setSearch] = useState();
-    let [minPrice, setMinPrice] = useState(1);
-    let [maxPrice, setMaxPrice] = useState(100000);
-    let [take ] = useState(20);
-    const [skip, setSkip] = useState(0);
+    let [product_group, setProductGroup] = useState(searchParams.get('product_group') ?  searchParams.get('product_group').split('-') : []);
+    let [vid_modeli, setVidModeli] = useState(searchParams.get('vid_modeli') ?  searchParams.get('vid_modeli').split('-') : []);
+    let [size, setSize] = useState(searchParams.get('size') ?  searchParams.get('size').split('-') : []);
+
+    let [sort, setSort] = useState(searchParams.get('sort') ?  searchParams.get('sort') : '');
+    let [search, setSearch] = useState(searchParams.get('search') ?  searchParams.get('search') : '');
+    let [minPrice, setMinPrice] = useState(searchParams.get('minPrice') ? Number(searchParams.get('minPrice')) : 1);
+    let [maxPrice, setMaxPrice] = useState(searchParams.get('maxPrice') ? Number(searchParams.get('maxPrice')) : 120000);
+    let [take ] = useState(searchParams.get('take') ? Number(searchParams.get('take')) : 20);
+    const [skip, setSkip] = useState(searchParams.get('skip') ? Number(searchParams.get('skip')) : 0);
 
     const inputRef = useRef();
     const priceMinRef = useRef();
@@ -45,13 +49,35 @@ export default function Goods({ data_f }) {
     const sizeRef = useRef();
     //const navigate = useNavigate();
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [searchParams ] = useSearchParams();
-
+    
 
     //let location = useLocation();
 
-    //useEffect(() => {
+    useEffect(() => {
+
+        console.log('sort', sort);
+        setSearchParams({
+            size: size.join('-'),
+            vid_modeli: vid_modeli.join('-'),
+            product_group: product_group.join('-'),
+            search: search,
+            minPrice: minPrice,
+            maxPrice: maxPrice,
+            take: take,
+            skip: skip,
+            currentPage: currentPage,
+            sort: sort
+        });
+        //setSearchParams({vid_modeli: vid_modeli.join('-')});
+        // let size_url = searchParams.get('size')
+        // if (size_url != null) {
+        //     console.log('size', size );
+        //     console.log('size_url', size_url.split('-'));
+            
+        //     //setSize(size_url.split('-'));
+        // }
+
+        
         //console.log('location search', location.search);
         //setSearchParams({size: size});
         //setSearchParams({take: take});
@@ -70,7 +96,7 @@ export default function Goods({ data_f }) {
         // navigate({pathname: '/goods', search: '?' + queryString}); // передаем в URL браузера
         // console.log('navigate ' + queryString);
         // //}
-    //}, [size, product_group, vid_modeli, minPrice, maxPrice, skip, search, sort, take]);
+    }, [size, product_group, vid_modeli, minPrice, maxPrice, skip, search, sort, take]);
 
 
     //searchParams.get('size');
@@ -80,18 +106,20 @@ export default function Goods({ data_f }) {
         
     //     if (location.search) {
     //         console.log('location', location);
-            let take_url = searchParams.get('take')
-            if (take_url != null) {
-                //take = (Number(take_url));
-            }
+            // let take_url = searchParams.get('take')
+            // if (take_url != null) {
+            //     //take = (Number(take_url));
+            // }
     //         let skip_url = searchParams.get('skip')
     //         if (skip_url != null) {
     //             setSkip(Number(skip_url));
     //         }
-            let size_url = searchParams.get('size')
-            if (size_url != null) {
-                //size = [size_url;
-            }
+            // let size_url = searchParams.get('size')
+            // if (size_url != null) {
+            //     console.log('size', size );
+            //     console.log('size_url', size_url.split('-'));
+            //     //setSize(size_url);
+            // }
     //         console.log(take_url);
     //     }
     // }, [searchParams])
@@ -140,7 +168,9 @@ export default function Goods({ data_f }) {
     }
 
     function searching(e) {
-        searchDebounce(e.target.value);
+        //searchDebounce(e.target.value);
+        setSearch(e.target.value);
+        
         //console.log(sort);
     }
 
@@ -156,9 +186,10 @@ export default function Goods({ data_f }) {
 
 
     function updateFilter(event, array, set, name) {
-        //console.log(array);
+        
         //console.log(event.target.id, event.target.value);
         let temp = structuredClone(array);
+        console.log('temp', temp);
 
         let res = temp.findIndex(e => e === event.target.value)
 
@@ -175,9 +206,13 @@ export default function Goods({ data_f }) {
             }
         }
         set(temp);
-         //setSearchParams({[name]: temp});
-        // console.log('set', {[name]: temp});
 
+        //console.log('event.target',event.target);
+        //event.target.checked = true;
+        
+        // console.log('set', {[name]: temp});
+        // console.log('name', name);
+        // console.log('array', array);
     }
 
     let pages_arr = [];
@@ -226,6 +261,7 @@ export default function Goods({ data_f }) {
                             ref={inputRef}
                             id="inputSearch"
                             bsPrefix='search_input'
+                            value={search}
                             placeholder="поиск..."
                             aria-describedby="поиск..."
                             onChange={(event) => searching(event)}
@@ -233,7 +269,7 @@ export default function Goods({ data_f }) {
                         <Button bsPrefix="search_clear" onClick={clearSearch}>X</Button>
 
                         <div className="sort_div">
-                            <Form.Select bsPrefix="inputSort" aria-label="Default select example" size='sm' variant="outline-danger" onChange={(event) => sorting(event)}>
+                            <Form.Select value={sort} bsPrefix="inputSort" aria-label="Default select example" size='sm' variant="outline-danger" onChange={(event) => sorting(event)}>
                                 <option>Сортировка</option>
                                 {sortArray.map((e, index) =>
                                     <option key={e.name} value={e.id}>{e.name}</option>
@@ -246,9 +282,9 @@ export default function Goods({ data_f }) {
                     {/* <Button variant="danger" id='filter_btn' onClick={}>Фильтры...</Button> */}
                     <div className='size_wrapper' ref={sizeRef} style={checkedFilter ? { display: 'inline' } : { display: 'none' }}>
                         Размеры:
-                        <ToggleButtonGroup type="checkbox" defaultValue={'Все'} bsPrefix="size_toggle_wrapper">
+                        <ToggleButtonGroup value={size} type="checkbox" bsPrefix="size_toggle_wrapper">
                             {size_0.map((e, index) =>
-                                <ToggleButton id={e.name_1c} key={"tb_size_" + index} value={e.id} variant="outline-danger" onChange={(event) => updateFilter(event, size, setSize, 'size')}>
+                                <ToggleButton selected ={true} id={e.name_1c} key={"tb_size_" + index} value={String(e.id)} variant="outline-danger" onChange={(event) => updateFilter(event, size, setSize, 'size')}>
                                     {e.name_1c}
                                 </ToggleButton>
                             )}
@@ -262,10 +298,10 @@ export default function Goods({ data_f }) {
 
                     <div className='group_wrapper' style={checkedFilter ? { display: 'inline' } : { display: 'none' }}>
                         <p>Сезоны:  </p>
-                        <ToggleButtonGroup vertical type="checkbox" defaultValue={'Все'} className="_mb" >
+                        <ToggleButtonGroup value={product_group} vertical type="checkbox" defaultValue={'Все'} className="_mb" >
 
                             {product_group_0.map((e, index) =>
-                                <ToggleButton className='ver_filter_buttons' id={e.name_1c} key={"tb_group_" + index} value={e.id} variant="outline-danger" onChange={(event) => updateFilter(event, product_group, setProductGroup)}>
+                                <ToggleButton className='ver_filter_buttons' id={e.name_1c} key={"tb_group_" + index} value={String(e.id)} variant="outline-danger" onChange={(event) => updateFilter(event, product_group, setProductGroup, 'product_group')}>
                                     {e.name_1c}
                                 </ToggleButton>
                             )
@@ -275,9 +311,9 @@ export default function Goods({ data_f }) {
 
                         {/* <div className='vid_wrapper'> */}
                         <p>Модели:</p>
-                        <ToggleButtonGroup vertical type="checkbox" defaultValue={'Все'} className="_mb">
+                        <ToggleButtonGroup value={vid_modeli} vertical type="checkbox" defaultValue={'Все'} className="_mb">
                             {vid_modeli_0.map((e, index) =>
-                                <ToggleButton id={e.name_1c} key={"tb_vid_" + index} value={e.id} variant="outline-danger" onChange={(event) => updateFilter(event, vid_modeli, setVidModeli)}>
+                                <ToggleButton id={e.name_1c} key={"tb_vid_" + index} value={String(e.id)} variant="outline-danger" onChange={(event) => updateFilter(event, vid_modeli, setVidModeli, 'vid_modeli')}>
                                     {e.name_1c}
                                 </ToggleButton>
                             )}

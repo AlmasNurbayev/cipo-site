@@ -13,6 +13,9 @@ import NewsPage from "../pages/NewsPage";
 import AuthPage from "../pages/AuthPage";
 import RegisterPage from "../pages/RegisterPage";
 import CrmPage from "../pages/CrmPage";
+import ClientManage from "../components/CRM/ClientManage2";
+import CrmClientsPage from "../pages/CrmClientsPage";
+import CrmSendPage from "../pages/CrmSendPage";
 
 export const publicRoutes = createBrowserRouter([
     //{path: '/product/:id', element: <PostPage/>, exact:true},
@@ -22,9 +25,11 @@ export const publicRoutes = createBrowserRouter([
     {path: '/goods/filter?', element: <GoodsPage/>, exact:true},
     {path: '/good/:id', element: <GoodPage/>, exact:true},
     {path: '/newsID/:id', element: <NewsPage/>, exact:true},
-    {path: '/crm', element: <CrmPage/>},
-    {path: '/register', element: <RegisterPage/>},
-    {path: '/auth', element: <AuthPage/>},
+    //{path: '/crm', element: <CrmPage/>},
+    //{path: '/crm/clients', element: <CrmClientsPage/>, exact:true},
+    //{path: '/crm/send', element: <CrmSendPage/>, exact:true},
+    //{path: '/register', element: <RegisterPage/>},
+    //{path: '/auth', element: <AuthPage/>},
     {path: '/', element: <Main title='Главная'/>, exact:true},
     {path: '*', element: <ErrorPage/>},
 ])

@@ -44,6 +44,18 @@ export const clientApi = createApi({
         }
         })
       ,      
+      deleteClient: build.mutation({
+        query(id) {
+          return {
+            url: `/api/client/`+ String(id),
+            headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            },          
+            method: 'DELETE',
+          }
+        }
+        })
+      ,      
     
   })
 })
@@ -52,3 +64,4 @@ export const clientApi = createApi({
 export const { usePatchClientMutation } = clientApi;
 export const { useCreateClientMutation } = clientApi;
 export const { useGetAllClientQuery } = clientApi;
+export const { useDeleteClientMutation } = clientApi;

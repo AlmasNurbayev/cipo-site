@@ -416,6 +416,11 @@ margin-left: 10px;
   display: flex;
 }
 
+/* убираем строку над пагинацией */
+.MuiTablePagination-root { 
+  margin-top: 0px!important;
+}
+
 
 @media screen and (min-width:100px) and (max-width:600px) {
 
