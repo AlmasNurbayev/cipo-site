@@ -36,7 +36,9 @@ export default function News() {
                      {/* <Row xs={2} md={3} className="g-4"> */}
                     {data.map((element, index) =>
                         <Card key = {'NewsCard' + index} border="light" >
-                            <Card.Img bsPrefix='news_img' variant="top" src={backend_url + '/' +element.image_path} />
+                            <a href = {"/newsID/"+element.id}>
+                                <Card.Img bsPrefix='news_img' variant="top" src={backend_url + '/' +element.image_path} />
+                            </a>
                             <Card.Body >
                                 <Card.Title><h6>{element.title}</h6></Card.Title>
                                 {/* <Card.Text> */}

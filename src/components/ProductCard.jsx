@@ -32,7 +32,11 @@ export default function ProductCard({ product }) {
             
 
             <Card className='ProductCard' key={'card_' + product.product_id} >
-                <Card.Img bsPrefix = '_card-img' variant="top" src={backend_url + '/' + product.image_active_path} />
+                {/* <div className='ProductCard_img' > */}
+                <a href={"good/"+product.product_id}>
+                    <Card.Img  variant="top" src={backend_url + '/' + product.image_active_path} />
+                </a>
+                {/* </div> */}
                 <Card.Body style={{ height: '120px', padding: '5px' }}>
                     <Card.Title><h6>{product.vid_modeli_name}</h6></Card.Title>
                     <Card.Text>
